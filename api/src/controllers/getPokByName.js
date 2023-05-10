@@ -8,10 +8,12 @@ async function getPokByName(req, res) {
     const response = await axios.get(URL)
 
     const pokFilterName = response.data.filter((pika)=>{
-        return pika.name.startsWith(searchName)
+        return pika.name === searchName
     })
 
-    console.log(pokFilterName)
+    if(!pokFilterName.length){
+        throw new Error(`No hay ningun pokemon llamado ${searchName}`)
+    }
 
     res.status(200).json(pokFilterName);
   } catch (error) {

@@ -14,7 +14,8 @@ async function getPokByName(req, res) {
           attack: data.stats[1].base_stat,
           defense: data.stats[2].base_stat,
           height: data.height,
-          weight: data.weight
+          weight: data.weight,
+          type: data.types[0].type.name
         };
         res.status(200).json(pokemon);
       } catch (error) {
