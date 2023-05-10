@@ -1,21 +1,23 @@
-// const URL = "https://pokeapi.co/api/v2/pokemon/";
-// const axios = require("axios");
+const URL = "http://localhost:3001/pokemons";
+const axios = require("axios");
 
-// async function getPokByName(req, res) {
-//     try {
-//         const { name } = req.query;
-//         const response = await axios.get(URL + name);
-//         const { data } = response;
-//         const pokemon = {
-//           id: data.id,
-//           name: data.name,
-//           height: data.height,
-//           weight: data.weight
-//         };
-//         res.status(200).json(pokemon);
-//       } catch (error) {
-//         res.status(500).json({ error: error.message });
-//       }
-// }
+async function getPokByName(req, res) {
+  try {
+    const { name } = req.query
+    const searchName = name.toLowerCase()
+    const response = await axios.get(URL)
 
-// module.exports = getPokByName;
+    const pokFilterName = response.data.filter((pika)=>{
+        return pika.name.startsWith(searchName)
+    })
+
+    console.log(pokFilterName)
+
+    res.status(200).json(pokFilterName);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send({ error: error.message });
+  }
+}
+
+module.exports = getPokByName;
