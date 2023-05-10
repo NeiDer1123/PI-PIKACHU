@@ -2,7 +2,7 @@ const { Router } = require('express');
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 const getPokById = require('../controllers/getPokById');
-const getAllPok = require('../controllers/getAllPok');
+const {getAllPok} = require('../controllers/getAllPok');
 const getPokByName = require('../controllers/getPokByName');
 const getTypesPok = require('../controllers/getTypesPok');
 
