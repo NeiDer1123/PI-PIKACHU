@@ -8,7 +8,7 @@ async function getTypesPok(req, res) {
         const { data } = response
 
         data.results.map((type)=>{
-            typesPokemon.push(type.name)
+            typesPokemon.push({name: type.name})
         })
         // console.log(data)
         res.status(200).json(typesPokemon);

@@ -9,9 +9,8 @@ module.exports = (sequelize) => {
     {
       id: {
         type: DataTypes.INTEGER,
-        allowNull: false,
         primaryKey: true,
-        autoIncrement: 1282,
+        autoIncrement: true,
       },
       name: {
         type: DataTypes.STRING,
@@ -25,7 +24,7 @@ module.exports = (sequelize) => {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
-      stroke: {
+      attack: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
@@ -35,15 +34,15 @@ module.exports = (sequelize) => {
       },
       speed: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
       },
       height: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
       },
       weight: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
       },
     },
     { timestamps: false }
