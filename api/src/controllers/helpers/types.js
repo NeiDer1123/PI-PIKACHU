@@ -22,7 +22,6 @@ function searchTypes(types) {
   for (let i = 0; i < types.length; i++) {
     type.push(types[i].type.name);
   }
-  console.log(type);
   return type;
 }
 

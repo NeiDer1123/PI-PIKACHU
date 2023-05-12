@@ -1,6 +1,7 @@
 const URL = "https://pokeapi.co/api/v2/pokemon?offset=0&limit=5";
 const axios = require("axios");
 const { searchTypes } = require("./helpers/types");
+const { findAll } = require("./helpers/pokemons");
 
 async function getAllPok(req, res) {
   try {
@@ -22,14 +23,18 @@ async function getAllPok(req, res) {
         speed: data.stats[5].base_stat,
         height: data.height,
         weight: data.weight,
-        type: searchTypes(data.types),
+        types: searchTypes(data.types),
         // type: data.types[0].type.name
       };
     });
 
-    const allpokemones = await Promise.all(promises);
+    const allPokemonsDataBase = await findAll();
 
-    res.status(200).json(allpokemones);
+    const allPokemonsApi = await Promise.all(promises);
+
+    const allPokemons = [...allPokemonsApi, ...allPokemonsDataBase];
+
+    res.status(200).json(allPokemons);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

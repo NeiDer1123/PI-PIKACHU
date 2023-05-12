@@ -1,9 +1,31 @@
-const { Pokemon } = require("../../db");
+const { Pokemon, Type } = require("../../db");
 const axios = require("axios");
 
 // Crea un Pokemon
-const create = async (pokemon) => {
-  const newPokemon = await Pokemon.create(pokemon);
+const create = async ({
+  name,
+  image,
+  life,
+  attack,
+  defense,
+  speed,
+  height,
+  weight,
+  types, //
+}) => {
+  const newPokemon = await Pokemon.create({
+    name,
+    image,
+    life,
+    attack,
+    defense,
+    speed,
+    height,
+    weight,
+  });
+
+  newPokemon.addTypes(types);
+
   return newPokemon;
 };
 
@@ -17,20 +39,35 @@ const countPokemons = async () => {
 // Encuentra a todos los pokemones creados
 // Luego cambia su propiedad ID para que no se repita con los de la API
 const findAll = async () => {
-  const allPokemons = await Pokemon.findAll();
+  const allPokemons = await Pokemon.findAll({
+    include: {
+      model: Type,
+      attributes: ["name"],
+      through: {
+        attributes: [],
+      },
+    },
+  });
   const promises = allPokemons.map(async (pokemon) => {
     const count = await countPokemons();
-    console.log(count);
-    return {
+    const modifiedTypes = pokemon.Types.map((type) => type.name);
+
+    const modifiedPokemon = {
       ...pokemon.dataValues,
       id: pokemon.id + count,
+      types: modifiedTypes
     };
+
+    delete modifiedPokemon.Types;
+
+    return modifiedPokemon
   });
-  const idModified = Promise.all(promises);
+
+  const idModified = await Promise.all(promises);
   return idModified;
 };
 
 module.exports = {
   create,
-  findAll
+  findAll,
 };
