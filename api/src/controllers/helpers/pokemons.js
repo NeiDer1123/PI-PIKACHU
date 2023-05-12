@@ -48,19 +48,20 @@ const findAll = async () => {
       },
     },
   });
+
   const promises = allPokemons.map(async (pokemon) => {
     const count = await countPokemons();
-    const modifiedTypes = pokemon.Types.map((type) => type.name);
+    const modifiedTypes = pokemon.Types.map((type) => type.name); // Obtengo el array con solo los nombres
 
     const modifiedPokemon = {
       ...pokemon.dataValues,
       id: pokemon.id + count,
-      types: modifiedTypes
+      types: modifiedTypes, // Creo propiedad con un array de solo los nombres.
     };
 
-    delete modifiedPokemon.Types;
+    delete modifiedPokemon.Types; // Elimino la propiedad Type que contiene el arreglo de objetos.
 
-    return modifiedPokemon
+    return modifiedPokemon;
   });
 
   const idModified = await Promise.all(promises);
