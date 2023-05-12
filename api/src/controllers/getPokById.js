@@ -2,12 +2,12 @@ const URL = "https://pokeapi.co/api/v2/pokemon/";
 const axios = require("axios");
 const {searchTypes} = require('./getAllPok')
 
-async function getPokByName(req, res) {
+async function getPokById(req, res) {
     try {
         const { idPokemon } = req.params;
         const response = await axios.get(URL + idPokemon);
         const { data } = response;
-        const pokemon = {
+        const pokemonApi = {
           id: data.id,
           name: data.name,
           image: data.sprites.other.dream_world.front_default ? data.sprites.other.dream_world.front_default : data.sprites.front_default,
@@ -18,12 +18,11 @@ async function getPokByName(req, res) {
           height: data.height,
           weight: data.weight,
           types: searchTypes(data.types),
-          // type: data.types[0].type.name
         };
-        res.status(200).json(pokemon);
+        res.status(200).json(pokemonApi);
       } catch (error) {
         res.status(500).json({ error: error.message });
       }
 }
 
-module.exports = getPokByName;
+module.exports = getPokById;
