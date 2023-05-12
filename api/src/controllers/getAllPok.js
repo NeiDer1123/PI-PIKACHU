@@ -1,14 +1,6 @@
 const URL = "https://pokeapi.co/api/v2/pokemon?offset=0&limit=5";
 const axios = require("axios");
-
-function searchTypes(types) {
-  let type = [];
-  for (let i = 0; i < types.length; i++) {
-    type.push(types[i].type.name);
-  }
-  console.log(type);
-  return type;
-}
+const { searchTypes } = require("./helpers/types");
 
 async function getAllPok(req, res) {
   try {

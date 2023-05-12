@@ -1,25 +1,4 @@
-const { Pokemon } = require("../db");
-const axios = require("axios");
-
-const countPokemons = async () => {
-  const response = await axios.get("https://pokeapi.co/api/v2/pokemon");
-  const { count } = response.data;
-  return count;
-};
-
-const findAll = async () => {
-  const allPokemons = await Pokemon.findAll();
-  const promises = allPokemons.map(async (pokemon) => {
-    const count = await countPokemons();
-    console.log(count);
-    return {
-      ...pokemon.dataValues,
-      id: pokemon.id + count,
-    };
-  });
-  const idModified = Promise.all(promises);
-  return idModified;
-};
+const { findAll } = require("./helpers/pokemons");
 
 async function findAllPok(req, res) {
   try {

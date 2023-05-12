@@ -1,9 +1,4 @@
-const { Pokemon } = require("../db");
-
-const create = async (pokemon) => {
-  const newPokemon = await Pokemon.create(pokemon);
-  return newPokemon;
-};
+const { create } = require("./helpers/pokemons");
 
 async function createPok(req, res) {
   try {
