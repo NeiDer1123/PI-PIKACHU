@@ -55,8 +55,7 @@ const countPokemons = async () => {
   return count;
 };
 
-// Encuentra a todos los pokemones creados // 
-// Luego cambia su propiedad ID para que no se repita con los de la API //
+// Encuentra a todos los pokemones creados para personalizacion // 
 const findAll = async () => {
   const allPokemons = await Pokemon.findAll({
     include: {
@@ -74,7 +73,7 @@ const findAll = async () => {
 
     const modifiedPokemon = {
       ...pokemon.dataValues,
-      id: pokemon.id + count,
+      id: pokemon.id + count, // Cambia su propiedad ID para que no se repita con los de la API, y simulo continuidad.
       types: modifiedTypes, // Creo propiedad con un array de solo los nombres.
     };
 
