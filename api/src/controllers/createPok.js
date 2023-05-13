@@ -1,10 +1,10 @@
-const { create } = require("./helpers/pokemons");
+const { createPokemonDb } = require("./helpers/pokemons");
 
 async function createPok(req, res) {
   try {
     const { name, image, life, attack, defense, speed, height, weight, types } =
       req.body;
-    const newPokemon = await create({
+    const newPokemon = await createPokemonDb({
       name,
       image,
       life,

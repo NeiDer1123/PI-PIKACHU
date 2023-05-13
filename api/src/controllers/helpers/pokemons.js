@@ -21,7 +21,7 @@ const createPokemonApi = (data)=> {
 }
 
 // Crea un Pokemon de la DB //
-const create = async ({
+const createPokemonDb = async ({
   name,
   image,
   life,
@@ -87,7 +87,7 @@ const findAll = async () => {
 };
 
 module.exports = {
-  create,
+  createPokemonDb,
   findAll,
   countPokemons,
   createPokemonApi
