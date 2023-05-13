@@ -1,4 +1,5 @@
 const URL = 'http://localhost:3001/pokemons'
+const axios = require("axios");
 
 async function getPokByName(req, res) {
   try {
