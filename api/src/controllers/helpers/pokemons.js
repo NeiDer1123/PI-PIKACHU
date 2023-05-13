@@ -71,4 +71,5 @@ const findAll = async () => {
 module.exports = {
   create,
   findAll,
+  countPokemons,
 };
