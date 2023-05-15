@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getTypes } from "../../redux/actions";
 import validate from "./validate";
-import axios from "axios";
+// import axios from "axios";
 
 export default function Form() {
   const dispatch = useDispatch();
@@ -16,12 +16,22 @@ export default function Form() {
     name: "",
     life: "",
     types: [],
+    attack: "",
+    defense: "",
+    speed: "",
+    height: "",
+    weight: ""
   });
 
   const [errors, setErrors] = useState({
     name: "",
     life: "",
     types: [],
+    attack: "",
+    defense: "",
+    speed: "",
+    height: "",
+    weight: ""
   });
 
   const onChangeName = (event) => {
@@ -30,8 +40,8 @@ export default function Form() {
   };
 
   const onChange = (event) => {
-    setForm({ ...form, life: parseInt(event.target.value) });
-    setErrors(validate({ ...form, life: parseInt(event.target.value) }));
+    setForm({ ...form, [event.target.name]: parseInt(event.target.value) });
+    setErrors(validate({ ...form, [event.target.name]: parseInt(event.target.value) }));
   };
 
   const handleCheckboxChange = (event) => {
@@ -68,12 +78,17 @@ export default function Form() {
     if(errors.name || errors.life || errors.types){
       alert('Debes cumplir con todos los requisitos para crear un Pokemon')
     } else {
-      axios.post("http://localhost:3001/pokemons", form)
+      // axios.post("http://localhost:3001/pokemons", form)
       console.log(form);
       setForm({
         name: "",
         life: "",
         types: [],
+        attack: "",
+        defense: "",
+        speed: "",
+        height: "",
+        weight: ""
       })
     }
   };
@@ -87,8 +102,33 @@ export default function Form() {
       </div>
       <div>
         <label>Life:</label>
-        <input type="number" value={form.life} onChange={onChange} />
+        <input type="number" value={form.life} name='life' onChange={onChange} />
         {errors.life && <span>{errors.life}</span>}
+      </div>
+      <div>
+        <label>Attack:</label>
+        <input type="number" value={form.attack} name='attack' onChange={onChange} />
+        {errors.attack && <span>{errors.attack}</span>}
+      </div>
+      <div>
+        <label>Defense:</label>
+        <input type="number" value={form.defense} name='defense' onChange={onChange} />
+        {errors.defense && <span>{errors.defense}</span>}
+      </div>
+      <div>
+        <label>Speed:</label>
+        <input type="number" value={form.speed} name='speed' onChange={onChange} />
+        {errors.speed && <span>{errors.speed}</span>}
+      </div>
+      <div>
+        <label>Height in cm:</label>
+        <input type="number" value={form.height} name='height' onChange={onChange} />
+        {errors.height && <span>{errors.height}</span>}
+      </div>
+      <div>
+        <label>Weight in Kg:</label>
+        <input type="number" value={form.weight} name='weight' onChange={onChange} />
+        {errors.weight && <span>{errors.weight}</span>}
       </div>
       <div>
         <label>Select Types:</label>
