@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getTypes } from "../../redux/actions";
 import validate from "./validate";
+import axios from "axios";
 
 export default function Form() {
   const dispatch = useDispatch();
@@ -67,6 +68,7 @@ export default function Form() {
     if(errors.name || errors.life || errors.types){
       alert('Debes cumplir con todos los requisitos para crear un Pokemon')
     } else {
+      axios.post("http://localhost:3001/pokemons", form)
       console.log(form);
       setForm({
         name: "",
