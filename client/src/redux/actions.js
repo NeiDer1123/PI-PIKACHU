@@ -1,5 +1,17 @@
 import axios from "axios";
-import { GET_POKEMONS } from "./actions-types";
+import { GET_POKEMONS, GET_TYPES } from "./actions-types";
+
+
+const getTypes = () => {
+  return async function (dispatch) {
+    const response = await axios.get("http://localhost:3001/types");
+    const types = response.data;
+    dispatch({
+      type: GET_TYPES,
+      payload: types,
+    });
+  };
+}
 
 const getPokemons = () => {
   return async function (dispatch) {
@@ -27,5 +39,6 @@ const getPokemons = () => {
 
 export {
   getPokemons,
+  getTypes
   // getPokemon
 };

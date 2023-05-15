@@ -1,4 +1,4 @@
-const URL = "https://pokeapi.co/api/v2/pokemon?offset=0&limit=5";
+const URL = "https://pokeapi.co/api/v2/pokemon?offset=0&limit=12";
 const axios = require("axios");
 const { findAll, createPokemonApi } = require("./helpers/pokemons");
 

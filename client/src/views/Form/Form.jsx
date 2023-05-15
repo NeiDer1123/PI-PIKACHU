@@ -1,69 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getTypes } from "../../redux/actions";
 
 export default function Form() {
-  const types = [
-    {
-      name: "normal",
-    },
-    {
-      name: "fighting",
-    },
-    {
-      name: "flying",
-    },
-    {
-      name: "poison",
-    },
-    {
-      name: "ground",
-    },
-    {
-      name: "rock",
-    },
-    {
-      name: "bug",
-    },
-    {
-      name: "ghost",
-    },
-    {
-      name: "steel",
-    },
-    {
-      name: "fire",
-    },
-    {
-      name: "water",
-    },
-    {
-      name: "grass",
-    },
-    {
-      name: "electric",
-    },
-    {
-      name: "psychic",
-    },
-    {
-      name: "ice",
-    },
-    {
-      name: "dragon",
-    },
-    {
-      name: "dark",
-    },
-    {
-      name: "fairy",
-    },
-    {
-      name: "unknown",
-    },
-    {
-      name: "shadow",
-    },
-  ];
 
+  const dispatch = useDispatch()
+  const types = useSelector(state=>state.types)
+  
+  useEffect(()=>{
+    dispatch(getTypes())
+  },[dispatch])
+  
   const [form, setForm] = useState({
     name: "",
     life: "",
@@ -71,18 +18,18 @@ export default function Form() {
   });
 
   const handleCheckboxChange = (event) => {
-    const { value, checked} = event.target;
-    // console.log(event.target);
+    const { value, checked } = event.target;
     if (checked) {
       const typeIndex = types.findIndex((type) => type.name === value);
       setForm((prevForm) => ({
         ...prevForm,
-        types: [...prevForm.types, typeIndex],
+        types: [...prevForm.types, typeIndex + 1],
       }));
     } else {
+      const typeIndex = types.findIndex((type) => type.name === value);
       setForm((prevForm) => ({
         ...prevForm,
-        types: prevForm.types.filter((type) => type !== value),
+        types: prevForm.types.filter((type) => type !== typeIndex + 1),
       }));
     }
   };
@@ -118,7 +65,7 @@ export default function Form() {
               <input
                 type="checkbox"
                 value={type.name}
-                checked={form.types.includes(index)}
+                checked={form.types.includes(index + 1)}
                 onChange={handleCheckboxChange}
               />
               {type.name}
@@ -131,80 +78,3 @@ export default function Form() {
   );
 }
 
-
-
-// POR NOMBRE
-
-// import { useState } from "react";
-
-// export default function Form() {
-//   const types = [
-//     {
-//       name: "normal",
-//     },
-//     {
-//       name: "fighting",
-//     },
-//     {
-//       name: "flying",
-//     },
-//     // ...resto de opciones
-//   ];
-
-//   const [form, setForm] = useState({
-//     name: "",
-//     life: "",
-//     type: [],
-//   });
-
-//   const handleCheckboxChange = (event) => {
-//     const { value, checked } = event.target;
-//     if (checked) {
-//       setForm((prevForm) => ({
-//         ...prevForm,
-//         type: [...prevForm.type, value],
-//       }));
-//     } else {
-//       setForm((prevForm) => ({
-//         ...prevForm,
-//         type: prevForm.type.filter((type) => type !== value),
-//       }));
-//     }
-//   };
-
-//   const handleSubmit = (event) => {
-//     event.preventDefault();
-//     console.log(form);
-//     // Aquí puedes realizar acciones adicionales con el formulario enviado
-//   };
-
-//   return (
-//     <form onSubmit={handleSubmit}>
-//       <div>
-//         <label>Name:</label>
-//         <input type="text" value={form.name} onChange={(event) => setForm({ ...form, name: event.target.value })} />
-//       </div>
-//       <div>
-//         <label>Life:</label>
-//         <input type="number" value={form.life} onChange={(event) => setForm({ ...form, life: event.target.value })} />
-//       </div>
-//       <div>
-//         <label>Select Types:</label>
-//         {types.map((type) => (
-//           <div key={type.name}>
-//             <label>
-//               <input
-//                 type="checkbox"
-//                 value={type.name}
-//                 checked={form.type.includes(type.name)}
-//                 onChange={handleCheckboxChange}
-//               />
-//               {type.name}
-//             </label>
-//           </div>
-//         ))}
-//       </div>
-//       <input type="submit" value="Submit" />
-//     </form>
-//   );
-// }
