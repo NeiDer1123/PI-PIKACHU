@@ -2,7 +2,14 @@ const { Pokemon, Type } = require("../../db");
 const { searchTypes } = require("./types");
 const axios = require("axios");
 
-// Crea un Pokemon de la API //
+// Obtiene la cantidad de Pokemones
+const countPokemons = async () => {
+  const response = await axios.get("https://pokeapi.co/api/v2/pokemon");
+  const { count } = response.data;
+  return count;
+};
+
+// Crea un Pokemon de la API
 const createPokemonApi = (data) => {
   return {
     id: data.id,
@@ -20,7 +27,7 @@ const createPokemonApi = (data) => {
   };
 };
 
-// Crea un Pokemon de la DB //
+// Crea un Pokemon de la DB
 const createPokemonDb = async ({
   name,
   image,
@@ -48,14 +55,7 @@ const createPokemonDb = async ({
   return newPokemon;
 };
 
-// Obtiene la cantidad de Pokemones //
-const countPokemons = async () => {
-  const response = await axios.get("https://pokeapi.co/api/v2/pokemon");
-  const { count } = response.data;
-  return count;
-};
-
-// Encuentra a todos los pokemones creados para personalizacion //
+// Encuentra a todos los pokemones creados para personalizacion
 const findAll = async () => {
   const allPokemons = await Pokemon.findAll({
     include: {
@@ -109,10 +109,32 @@ const findById = async (id) => {
   return modifiedPokemon;
 };
 
+// Encuentro todos los personajes de la API y DB
+const getAllPokemons = async (results) => {
+  const promises = results.map(async (el) => {
+    const response = await axios.get(el.url);
+    const { data } = response;
+    return createPokemonApi(data);
+  });
+
+  const allPokemonsDataBase = await findAll();
+
+  const allPokemonsApi = await Promise.all(promises);
+
+  const allPokemons = [...allPokemonsApi, ...allPokemonsDataBase];
+
+  return allPokemons;
+};
+
+// Encuentro el pokemon por nombre
+const getPokemonByName = () => {};
+
 module.exports = {
   createPokemonDb,
   findAll,
   countPokemons,
   createPokemonApi,
   findById,
+  getAllPokemons,
+  getPokemonByName,
 };

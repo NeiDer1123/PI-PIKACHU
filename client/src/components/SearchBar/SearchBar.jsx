@@ -1,17 +1,17 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { getPokemon } from "../../redux/actions";
+import { getPokemonById, getPokemonByName } from "../../redux/actions";
 
 export default function SearchBar() {
   const dispatch = useDispatch();
-  const [id, setId] = useState("");
+  const [idOrName, setIdOrName] = useState("");
 
   function handleInputChange(e) {
-    setId(e.target.value);
+    setIdOrName(e.target.value);
   }
 
   function handleOnclick(){
-    dispatch(getPokemon(id))
+    isNaN(idOrName) ? dispatch(getPokemonByName(idOrName)) : dispatch(getPokemonById(idOrName))
   } 
 
   return (
@@ -21,7 +21,7 @@ export default function SearchBar() {
         onChange={handleInputChange}
         placeholder="Busca un personaje..."
       />
-      <button onClick={() => handleOnclick(id)}>Agregar</button>
+      <button onClick={() => handleOnclick()}>Agregar</button>
     </div>
   );
 }

@@ -22,3 +22,4 @@ async function getPokByName(req, res) {
 }
 
 module.exports = getPokByName;
+

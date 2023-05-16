@@ -8,10 +8,10 @@ export default function CardsContainer() {
 
   return (
     <div className={style.container}>
-      {pokemons.map((poke) => {
+      {pokemons.map((poke, index) => {
         return (
           <Card
-            key={poke.id}
+            key={index}
             id={poke.id}
             name={poke.name}
             image={poke.image}
