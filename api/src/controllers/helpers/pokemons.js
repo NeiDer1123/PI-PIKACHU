@@ -3,7 +3,7 @@ const { searchTypes } = require("./types");
 const axios = require("axios");
 
 // Crea un Pokemon de la API //
-const createPokemonApi = (data)=> {
+const createPokemonApi = (data) => {
   return {
     id: data.id,
     name: data.name,
@@ -18,7 +18,7 @@ const createPokemonApi = (data)=> {
     weight: data.weight,
     types: searchTypes(data.types),
   };
-}
+};
 
 // Crea un Pokemon de la DB //
 const createPokemonDb = async ({
@@ -55,7 +55,7 @@ const countPokemons = async () => {
   return count;
 };
 
-// Encuentra a todos los pokemones creados para personalizacion // 
+// Encuentra a todos los pokemones creados para personalizacion //
 const findAll = async () => {
   const allPokemons = await Pokemon.findAll({
     include: {
@@ -86,9 +86,33 @@ const findAll = async () => {
   return idModified;
 };
 
+// Encuentra pokemon por ID
+const findById = async (id) => {
+  const lastIdApi = await countPokemons();
+  const pokemon = await Pokemon.findByPk(id - lastIdApi, {
+    include: {
+      model: Type,
+      attributes: ["name"],
+      through: {
+        attributes: [],
+      },
+    },
+  });
+  const modifiedTypes = pokemon.dataValues.Types.map((type) => type.name);
+  const modifiedPokemon = {
+    ...pokemon.dataValues,
+    id: pokemon.id + lastIdApi,
+    types: modifiedTypes,
+  };
+  delete modifiedPokemon.Types;
+
+  return modifiedPokemon;
+};
+
 module.exports = {
   createPokemonDb,
   findAll,
   countPokemons,
-  createPokemonApi
+  createPokemonApi,
+  findById,
 };

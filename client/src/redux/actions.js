@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_POKEMONS, GET_TYPES } from "./actions-types";
+import { GET_POKEMONS, GET_TYPES, GET_POKEMON } from "./actions-types";
 
 
 const getTypes = () => {
@@ -24,21 +24,22 @@ const getPokemons = () => {
   };
 };
 
-// const getPokemon = (id) => {
-//   return async function (dispatch) {
-//     const response = await axios.get(
-//       `http://localhost:3001/pokemons/${id}`
-//     );
-//     const pokemon = response.data;
-//     dispatch({
-//       type: GET_POKEMON,
-//       payload: pokemon,
-//     });
-//   };
-// };
+const getPokemon = (id) => {
+  return async function (dispatch) {
+    const response = await axios.get(
+      `http://localhost:3001/pokemons/${id}`
+    );
+    const pokemon = response.data;
+    console.log(pokemon)
+    dispatch({
+      type: GET_POKEMON,
+      payload: pokemon,
+    });
+  };
+};
 
 export {
   getPokemons,
-  getTypes
-  // getPokemon
+  getTypes,
+  getPokemon
 };
