@@ -4,7 +4,14 @@ import style from "./CardsContainer.module.css";
 
 export default function CardsContainer() {
 
-  const pokemons = useSelector(state=>state.pokemons)
+const selectFilteredPokemons = (state) => {
+  if (state.filteredPokemons.length > 0) {
+    return state.filteredPokemons;
+  }
+  return state.pokemons;
+};
+
+  const pokemons = useSelector(selectFilteredPokemons)
 
   return (
     <div className={style.container}>
@@ -15,12 +22,6 @@ export default function CardsContainer() {
             id={poke.id}
             name={poke.name}
             image={poke.image}
-            //  life={poke.life}
-            //  attack={poke.attack}
-            //  defense={poke.defense}
-            //  speed={poke.speed}
-            //  height={poke.height}
-            //  weight={poke.weight}
             types={poke.types}
           />
         );

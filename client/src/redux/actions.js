@@ -9,6 +9,7 @@ import {
   FILTER_CREATED,
   FILTER_MAX_MIN,
   FILTER_MIN_MAX,
+  FILTER_BY_TYPE,
 } from "./actions-types";
 
 const getTypes = () => {
@@ -84,6 +85,13 @@ const filterMinMax = () => {
   }
 };
 
+const filterByType = (type) => {
+  return {
+    type: FILTER_BY_TYPE,
+    payload: type
+  }
+};
+
 export {
   getPokemons,
   getTypes,
@@ -93,5 +101,6 @@ export {
   filterPokemonZa,
   filterPokemonCreated,
   filterMaxMin,
-  filterMinMax
+  filterMinMax,
+  filterByType
 };
