@@ -1,4 +1,4 @@
-import { CardsContainer } from "../../components";
+import { CardsContainer, Filters } from "../../components";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getPokemons } from "../../redux/actions";
@@ -13,7 +13,7 @@ export default function Home() {
 
   return (
     <div>
-      <h1>Esta el la vista del HOME</h1>
+      <Filters/>
       <CardsContainer />
     </div>
   );
