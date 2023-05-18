@@ -18,7 +18,6 @@ function rootReducer(state = initialState, action) {
 
   let pokemonsToFilter = state.filteredPokemons.length > 0 ? state.filteredPokemons : state.pokemons;
 
-
   switch (action.type) {
     case GET_TYPES:
       return { ...state, types: action.payload };

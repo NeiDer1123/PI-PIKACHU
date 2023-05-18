@@ -5,7 +5,6 @@ import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 
 export default function Detail() {
     const { pokemonId } = useParams();
-    // const numberId = parseInt(pokemonId)
     const dispatch = useDispatch();
     const pokemon = useSelector((state) => state.pokemon);
 
