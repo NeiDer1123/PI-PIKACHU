@@ -1,4 +1,4 @@
-import { CardsContainer, Filters, Paginate } from "../../components";
+import { CardsContainer, Filters} from "../../components";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getPokemons } from "../../redux/actions";

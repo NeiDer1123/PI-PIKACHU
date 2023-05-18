@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getTypes } from "../../redux/actions";
 import validate from "./validate";
-// import axios from "axios";
+import axios from "axios";
 
 export default function Form() {
   const dispatch = useDispatch();
@@ -15,6 +15,7 @@ export default function Form() {
   const [form, setForm] = useState({
     name: "",
     life: "",
+    image: "",
     types: [],
     attack: "",
     defense: "",
@@ -26,6 +27,7 @@ export default function Form() {
   const [errors, setErrors] = useState({
     name: "",
     life: "",
+    image: "",
     types: [],
     attack: "",
     defense: "",
@@ -34,9 +36,9 @@ export default function Form() {
     weight: ""
   });
 
-  const onChangeName = (event) => {
-    setForm({ ...form, name: event.target.value });
-    setErrors(validate({ ...form, name: event.target.value }));
+  const onChangeText = (event) => {
+      setForm({ ...form, [event.target.name]: event.target.value });
+      setErrors(validate({ ...form, [event.target.name]: event.target.value }));
   };
 
   const onChange = (event) => {
@@ -78,11 +80,12 @@ export default function Form() {
     if(errors.name || errors.life || errors.types){
       alert('Debes cumplir con todos los requisitos para crear un Pokemon')
     } else {
-      // axios.post("http://localhost:3001/pokemons", form)
+      axios.post("http://localhost:3001/pokemons", form)
       console.log(form);
       setForm({
         name: "",
         life: "",
+        image: "",
         types: [],
         attack: "",
         defense: "",
@@ -97,8 +100,13 @@ export default function Form() {
     <form onSubmit={handleSubmit}>
       <div>
         <label>Name:</label>
-        <input type="text" value={form.name} onChange={onChangeName} />
+        <input type="text" value={form.name} name="name" onChange={onChangeText} />
         {errors.name && <span>{errors.name}</span>}
+      </div>
+      <div>
+        <label>Image:</label>
+        <input type="text" value={form.image} name="image" onChange={onChangeText} />
+        {errors.image && <span>{errors.image}</span>}
       </div>
       <div>
         <label>Life:</label>

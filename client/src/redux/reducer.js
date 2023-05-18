@@ -5,7 +5,8 @@ import {
   GET_POKEMON_BY_NAME,
   FILTER_A_Z, FILTER_Z_A,
   FILTER_MAX_MIN, FILTER_MIN_MAX,
-  FILTER_BY_TYPE } from "./actions-types";
+  FILTER_BY_TYPE, 
+  FILTER_CREATED} from "./actions-types";
 
 const initialState = {
   pokemon: [],
@@ -57,6 +58,13 @@ function rootReducer(state = initialState, action) {
       });
       console.log(pokemonsByType);
       return { ...state, filteredPokemons: pokemonsByType };
+    
+    case FILTER_CREATED:
+      if(action.payload === "created" ){
+        return { ...state, filteredPokemons: state.pokemons.filter((pokemon)=> pokemon.created === true) }
+      } else {
+        return { ...state, filteredPokemons: state.pokemons.filter((pokemon)=> pokemon.created === false) }
+      }
 
     default:
       return { ...state };

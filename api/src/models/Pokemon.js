@@ -19,7 +19,6 @@ module.exports = (sequelize) => {
       image: {
         type: DataTypes.STRING,
         allowNull: false,
-        defaultValue: "https://w7.pngwing.com/pngs/589/55/png-transparent-pokemon-x-and-y-pancham-pokemon-universe-evolution-sombra-mammal-cat-like-mammal-carnivoran.png"
       },
       life: {
         type: DataTypes.INTEGER,
@@ -27,15 +26,15 @@ module.exports = (sequelize) => {
       },
       attack: {
         type: DataTypes.INTEGER,
-        allowNull: true,
+        allowNull: false,
       },
       defense: {
         type: DataTypes.INTEGER,
-        allowNull: true,
+        allowNull: false,
       },
       speed: {
         type: DataTypes.INTEGER,
-        allowNull: true,
+        allowNull: false,
       },
       height: {
         type: DataTypes.INTEGER,
@@ -44,6 +43,10 @@ module.exports = (sequelize) => {
       weight: {
         type: DataTypes.INTEGER,
         allowNull: true,
+      },
+      created: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: true,
       },
     },
     { timestamps: false }

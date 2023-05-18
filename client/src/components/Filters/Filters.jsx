@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import {
   filterByType,
+  filterCreated,
   filterMaxMin,
   filterMinMax,
   filterPokemonAz,
@@ -35,6 +36,8 @@ export default function Filters() {
         return dispatch(filterMinMax());
       case "todos":
         return dispatch(getPokemons());
+      case "created" || "originals":
+        return dispatch(filterCreated(value))
       default:
         return dispatch(filterByType(value));
     }
@@ -42,7 +45,6 @@ export default function Filters() {
 
   return (
     <div>
-      {/* <h3>FILTROS</h3> */}
       <div className={style.container}>
         <div className={style.row}>
           <div className={style.column}>
@@ -56,8 +58,8 @@ export default function Filters() {
             <span className={style.label}>Seleccion</span>
             <select onChange={handleChange}>
               <option value="todos">Todos</option>
-              <option value="creados">Creados</option>
-              <option value="originales">Originales</option>
+              <option value="created">Creados</option>
+              <option value="originals">Originales</option>
             </select>
           </div>
           <div className={style.column}>

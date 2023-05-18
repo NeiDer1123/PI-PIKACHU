@@ -37,6 +37,15 @@ export default function validate(form) {
   if (form.types.length > 4) {
     errors.types = "Debe contener maximo 4 tipos";
   }
+  if (form.image.length > 255){
+    errors.image = "La URL supera el limite de caracteres"
+  }
+  if (form.image.length === 0){
+    errors.image = "Debes agregar una imagen"
+  }
+  if (!form.image.endsWith(".png") && !form.image.endsWith(".gif") && !form.image.endsWith(".jpg") ){
+    errors.image = "Debe ser formato imagen en PNG, GIT, o JPG"
+  }
 
   return errors;
 }

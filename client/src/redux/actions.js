@@ -92,6 +92,13 @@ const filterByType = (type) => {
   }
 };
 
+const filterCreated = (typeFilter) => {
+  return {
+    type: FILTER_CREATED,
+    payload: typeFilter
+  }
+};
+
 export {
   getPokemons,
   getTypes,
@@ -102,5 +109,6 @@ export {
   filterPokemonCreated,
   filterMaxMin,
   filterMinMax,
-  filterByType
+  filterByType,
+  filterCreated,
 };

@@ -24,6 +24,7 @@ const createPokemonApi = (data) => {
     height: data.height,
     weight: data.weight,
     types: searchTypes(data.types),
+    created: false
   };
 };
 

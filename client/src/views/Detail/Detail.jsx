@@ -10,7 +10,7 @@ export default function Detail() {
 
     useEffect(() => {
       dispatch(getPokemonById(pokemonId));
-    }, [dispatch]);
+    }, [dispatch, pokemonId]);
 
   return (
     <div>
