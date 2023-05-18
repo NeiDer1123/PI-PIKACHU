@@ -12,7 +12,7 @@ function App() {
       {location.pathname !== "/" && <Navbar />}
       <Route exact path="/" render={() => <Landing />} />
       <Route path="/home" render={() => <Home />} />
-      <Route path="/detail" render={() => <Detail />} />
+      <Route path="/detail/:pokemonId" render={() => <Detail />} />
       <Route path="/create" render={() => <Form />} />
     </div>
   );

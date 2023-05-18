@@ -38,7 +38,7 @@ const getPokemonById = (id) => {
   return async function (dispatch) {
     const response = await axios.get(`http://localhost:3001/pokemons/${id}`);
     const pokemon = response.data;
-    console.log(pokemon);
+    // console.log(pokemon);
     dispatch({
       type: GET_POKEMON_BY_ID,
       payload: pokemon,

@@ -8,6 +8,7 @@ import {
   FILTER_BY_TYPE } from "./actions-types";
 
 const initialState = {
+  pokemon: [],
   pokemons: [],
   filteredPokemons: [],
   types: [],
@@ -23,13 +24,13 @@ function rootReducer(state = initialState, action) {
       return { ...state, types: action.payload };
 
     case GET_POKEMONS:
-      return { ...state, pokemons: action.payload, filteredPokemons: [] };
+      return { ...state, pokemons: action.payload, filteredPokemons: [], pokemon: [] };
 
     case GET_POKEMON_BY_ID:
-      return { ...state, pokemons: [action.payload] };
+      return { ...state, pokemon: action.payload, pokemons: [action.payload]};
 
     case GET_POKEMON_BY_NAME:
-      return { ...state, pokemons: [action.payload]}
+      return { ...state, pokemon: action.payload, pokemons: [action.payload]}
 
     case FILTER_A_Z:
       const pokemonsAz = pokemonsToFilter.slice().sort((a, b) => a.name.localeCompare(b.name));

@@ -7,6 +7,9 @@ export default function CardsContainer() {
 const selectFilteredPokemons = (state) => {
   if (state.filteredPokemons.length > 0) {
     return state.filteredPokemons;
+  } 
+  if (state.pokemon.length > 0) {
+    return state.pokemon;
   }
   return state.pokemons;
 };
