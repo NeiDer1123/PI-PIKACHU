@@ -1,8 +1,9 @@
+
 import style from "./Filters.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import {
-    filterByType,
+  filterByType,
   filterMaxMin,
   filterMinMax,
   filterPokemonAz,
@@ -19,9 +20,9 @@ export default function Filters() {
     dispatch(getTypes());
   }, [dispatch]);
 
-  const handlerClick = (event) => {
-    const { name } = event.target;
-    switch (name) {
+  const handleChange = (event) => {
+    const { value } = event.target;
+    switch (value) {
       case "A - Z":
         return dispatch(filterPokemonAz());
       case "Z - A":
@@ -35,91 +36,46 @@ export default function Filters() {
       case "todos":
         return dispatch(getPokemons());
       default:
-        return dispatch(filterByType(name))
+        return dispatch(filterByType(value));
     }
   };
 
   return (
     <div>
-      <h3>Tipos</h3>
-      <div>
-        {types.map((type) => {
-          return (
-            <button
-              key={type.name}
-              name={type.name}
-              onClick={(e) => handlerClick(e)}
-            >
-              {type.name}
-            </button>
-          );
-        })}
-      </div>
-      <h3 className={style.centerLabel}>Pokemon</h3>
+      {/* <h3>FILTROS</h3> */}
       <div className={style.container}>
         <div className={style.row}>
           <div className={style.column}>
             <span className={style.label}>Alfabeticamente</span>
-            <button
-              name="A - Z"
-              onClick={(e) => handlerClick(e)}
-              className={style.button}
-            >
-              A - Z
-            </button>
-            <button
-              name="Z - A"
-              onClick={(e) => handlerClick(e)}
-              className={style.button}
-            >
-              Z - A
-            </button>
+            <select onChange={handleChange}>
+              <option value="A - Z">A - Z</option>
+              <option value="Z - A">Z - A</option>
+            </select>
           </div>
           <div className={style.column}>
-            <div className={style.column}>
-              <button
-                name="todos"
-                onClick={(e) => handlerClick(e)}
-                className={style.button}
-              >
-                All
-              </button>
-            </div>
-            <div className={style.column}>
-              <button
-                name="creados"
-                onClick={(e) => handlerClick(e)}
-                className={style.button}
-              >
-                Creados
-              </button>
-            </div>
-            <div className={style.column}>
-              <button
-                name="originales"
-                onClick={(e) => handlerClick(e)}
-                className={style.button}
-              >
-                Originales
-              </button>
-            </div>
+            <span className={style.label}>Seleccion</span>
+            <select onChange={handleChange}>
+              <option value="todos">Todos</option>
+              <option value="creados">Creados</option>
+              <option value="originales">Originales</option>
+            </select>
           </div>
           <div className={style.column}>
             <span className={style.label}>Poder de ataque</span>
-            <button
-              name="Max - Min"
-              onClick={(e) => handlerClick(e)}
-              className={style.button}
-            >
-              Max - Min
-            </button>
-            <button
-              name="Min - Max"
-              onClick={(e) => handlerClick(e)}
-              className={style.button}
-            >
-              Min - Max
-            </button>
+            <select onChange={handleChange}>
+              <option value="Max - Min">Max - Min</option>
+              <option value="Min - Max">Min - Max</option>
+            </select>
+          </div>
+          <div className={style.column}>
+            <span className={style.label}>Tipos</span>
+            <select onChange={handleChange}>
+              {types.map((type) => (
+                <option key={type.name} value={type.name}>
+                  {type.name}
+                </option>
+              ))}
+            </select>
           </div>
         </div>
       </div>
