@@ -12,19 +12,30 @@ const initialState = {
   pokemon: [],
   pokemons: [],
   filteredPokemons: [],
+  filteredByType: [],
   types: [],
 };
 
+function pokemonsFilter(state){
+  if (state.filteredByType.length > 0 && state.filteredByType.length > state.filteredPokemons.length ){
+    return state.filteredByType
+  } else if (state.filteredPokemons.length > 0){
+    return state.filteredPokemons
+  } else {
+    return state.pokemons
+  }
+}
+
 function rootReducer(state = initialState, action) {
 
-  let pokemonsToFilter = state.filteredPokemons.length > 0 ? state.filteredPokemons : state.pokemons;
+  let pokemonsToFilter = pokemonsFilter(state);
 
   switch (action.type) {
     case GET_TYPES:
       return { ...state, types: action.payload };
 
     case GET_POKEMONS:
-      return { ...state, pokemons: action.payload, filteredPokemons: [], pokemon: [] };
+      return { ...state, pokemons: action.payload, filteredPokemons: [], pokemon: [], filteredByType: [] };
 
     case GET_POKEMON_BY_ID:
       return { ...state, pokemon: action.payload, pokemons: [action.payload]};
@@ -52,15 +63,14 @@ function rootReducer(state = initialState, action) {
       const pokemonsByType = state.pokemons.filter((pokemon) => {
         return pokemon.types.includes(action.payload);
       });
-      return { ...state, filteredPokemons: pokemonsByType };
+      return { ...state, filteredPokemons: pokemonsByType, filteredByType: pokemonsByType  };
     
-    case FILTER_CREATED:
-      if(action.payload === "created" ){
-        return { ...state, filteredPokemons: pokemonsToFilter.filter((pokemon)=> pokemon.created === true) }
-      } else {
-        return { ...state, filteredPokemons: pokemonsToFilter.filter((pokemon)=> pokemon.created === false) }
-      }
-
+      case FILTER_CREATED:
+        if(action.payload === "created" ){
+          return { ...state, filteredPokemons: pokemonsToFilter.filter((pokemon)=> pokemon.created === true) }
+        } else {
+          return { ...state, filteredPokemons: pokemonsToFilter.filter((pokemon)=> pokemon.created === false) }
+        }
 
     default:
       return { ...state };
