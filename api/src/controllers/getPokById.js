@@ -15,17 +15,27 @@ async function getPokById(req, res) {
     if (id > lastIdApi) {
       const pokemonDb = await findById(id);
 
-      res.status(200).json(pokemonDb);
+      if (!pokemonDb) {
+        return res.status(404).json({ error: "El Pokémon no existe en la base de datos" });
+      }
+
+      return res.status(200).json(pokemonDb);
     } else {
       const response = await axios.get(URL + idPokemon);
+
+      if (response.status !== 200) {
+        return res.status(404).json({ error: "El Pokémon no se encontró en la API" });
+      }
+
       const { data } = response;
       const pokemonApi = createPokemonApi(data);
 
-      res.status(200).json(pokemonApi);
+      return res.status(200).json(pokemonApi);
     }
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    return res.status(500).json({ error: error.message });
   }
 }
 
 module.exports = getPokById;
+

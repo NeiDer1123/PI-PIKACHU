@@ -24,7 +24,7 @@ const createPokemonApi = (data) => {
     height: data.height,
     weight: data.weight,
     types: searchTypes(data.types),
-    created: false
+    created: false,
   };
 };
 
@@ -38,8 +38,16 @@ const createPokemonDb = async ({
   speed,
   height,
   weight,
-  types, //
+  types,
 }) => {
+
+  // Verificar si ya existe un Pokémon con el mismo nombre
+  const existingPokemon = await Pokemon.findOne({ where: { name } });
+
+  if (existingPokemon) {
+    throw new Error(`Ya existe un Pokémon con el nombre ${name}`);
+  }
+
   const newPokemon = await Pokemon.create({
     name,
     image,
@@ -51,7 +59,7 @@ const createPokemonDb = async ({
     weight,
   });
 
-  newPokemon.addTypes(types);
+  await newPokemon.addTypes(types);
 
   return newPokemon;
 };
