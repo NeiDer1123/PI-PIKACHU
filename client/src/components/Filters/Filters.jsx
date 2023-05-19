@@ -36,7 +36,9 @@ export default function Filters() {
         return dispatch(filterMinMax());
       case "todos":
         return dispatch(getPokemons());
-      case "created" || "originals":
+      case "created":
+        return dispatch(filterCreated(value))
+      case "originals":
         return dispatch(filterCreated(value))
       default:
         return dispatch(filterByType(value));
@@ -45,6 +47,9 @@ export default function Filters() {
 
   return (
     <div>
+      <div>
+        <button onClick={handleChange} value="todos">Restore</button>
+      </div>
       <div className={style.container}>
         <div className={style.row}>
           <div className={style.column}>

@@ -8,7 +8,7 @@ async function getPokByName(req, res) {
     const response = await axios.get(URL)
 
     const pokFilterName = response.data.filter((pika)=>{
-        return pika.name === searchName
+        return pika.name.toLowerCase() === searchName
     })
 
     if(!pokFilterName.length){

@@ -20,7 +20,6 @@ export default function CardsContainer() {
   const pokemonsPerPage = 12
 
   const filteredPokemon = pokemons.slice(currentPage, currentPage + pokemonsPerPage);
-  console.log(filteredPokemon)
 
   const nextPage = () => {
     if (filteredPokemon.length < pokemonsPerPage) {
