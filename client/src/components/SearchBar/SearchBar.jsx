@@ -10,9 +10,11 @@ export default function SearchBar() {
     setIdOrName(e.target.value);
   }
 
-  function handleOnclick(){
-    isNaN(idOrName) ? dispatch(getPokemonByName(idOrName)) : dispatch(getPokemonById(idOrName))
-  } 
+  function handleOnclick() {
+    isNaN(idOrName)
+      ? dispatch(getPokemonByName(idOrName))
+      : dispatch(getPokemonById(idOrName));
+  }
 
   return (
     <div>
@@ -21,7 +23,7 @@ export default function SearchBar() {
         onChange={handleInputChange}
         placeholder="Busca un personaje..."
       />
-      <button onClick={() => handleOnclick()}>Agregar</button>
+      <button onClick={() => handleOnclick()}>Search</button>
     </div>
   );
 }

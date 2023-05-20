@@ -39,25 +39,33 @@ const getPokemons = () => {
 
 const getPokemonById = (id) => {
   return async function (dispatch) {
-    const response = await axios.get(`http://localhost:3001/pokemons/${id}`);
-    const pokemon = response.data;
-    dispatch({
-      type: GET_POKEMON_BY_ID,
-      payload: pokemon,
-    });
+    try {
+      const response = await axios.get(`http://localhost:3001/pokemons/${id}`);
+      const pokemon = response.data;
+      dispatch({
+        type: GET_POKEMON_BY_ID,
+        payload: pokemon,
+      });
+    } catch (error) {
+      alert(error.response.data.error);
+    }
   };
 };
 
 const getPokemonByName = (name) => {
   return async function (dispatch) {
-    const response = await axios.get(
-      `http://localhost:3001/pokemons/name?name=${name}`
-    );
-    const pokemon = response.data;
-    dispatch({
-      type: GET_POKEMON_BY_NAME,
-      payload: pokemon[0],
-    });
+    try {
+      const response = await axios.get(
+        `http://localhost:3001/pokemons/name?name=${name}`
+      );
+      const pokemon = response.data[0];
+      dispatch({
+        type: GET_POKEMON_BY_NAME,
+        payload: pokemon,
+      });
+    } catch (error) {
+      alert(error.response.data.error);
+    }
   };
 };
 
@@ -133,5 +141,5 @@ export {
   filterCreated,
   nextPage,
   previousPage,
-  resetPage
+  resetPage,
 };
