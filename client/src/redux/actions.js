@@ -10,6 +10,9 @@ import {
   FILTER_MAX_MIN,
   FILTER_MIN_MAX,
   FILTER_BY_TYPE,
+  NEXT_PAGE,
+  PREVIOUS_PAGE,
+  RESET_PAGE,
 } from "./actions-types";
 
 const getTypes = () => {
@@ -38,7 +41,6 @@ const getPokemonById = (id) => {
   return async function (dispatch) {
     const response = await axios.get(`http://localhost:3001/pokemons/${id}`);
     const pokemon = response.data;
-    // console.log(pokemon);
     dispatch({
       type: GET_POKEMON_BY_ID,
       payload: pokemon,
@@ -61,42 +63,60 @@ const getPokemonByName = (name) => {
 
 const filterPokemonAz = () => {
   return {
-    type: FILTER_A_Z
-  }
+    type: FILTER_A_Z,
+  };
 };
 
 const filterPokemonZa = () => {
   return {
-    type: FILTER_Z_A
-  }
+    type: FILTER_Z_A,
+  };
 };
 
 const filterPokemonCreated = () => {};
 
 const filterMaxMin = () => {
   return {
-    type: FILTER_MAX_MIN
-  }
+    type: FILTER_MAX_MIN,
+  };
 };
 
 const filterMinMax = () => {
   return {
-    type: FILTER_MIN_MAX
-  }
+    type: FILTER_MIN_MAX,
+  };
 };
 
 const filterByType = (type) => {
   return {
     type: FILTER_BY_TYPE,
-    payload: type
-  }
+    payload: type,
+  };
 };
 
 const filterCreated = (typeFilter) => {
   return {
     type: FILTER_CREATED,
-    payload: typeFilter
-  }
+    payload: typeFilter,
+  };
+};
+
+const nextPage = () => {
+  return {
+    type: NEXT_PAGE,
+  };
+};
+
+const previousPage = () => {
+  return {
+    type: PREVIOUS_PAGE,
+  };
+};
+
+const resetPage = () => {
+  return {
+    type: RESET_PAGE,
+  };
 };
 
 export {
@@ -111,4 +131,7 @@ export {
   filterMinMax,
   filterByType,
   filterCreated,
+  nextPage,
+  previousPage,
+  resetPage
 };

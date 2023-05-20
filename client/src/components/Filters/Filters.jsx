@@ -11,6 +11,7 @@ import {
   filterPokemonZa,
   getPokemons,
   getTypes,
+  resetPage
 } from "../../redux/actions";
 
 export default function Filters() {
@@ -23,6 +24,7 @@ export default function Filters() {
 
   const handleChange = (event) => {
     const { value } = event.target;
+    dispatch(resetPage())
     switch (value) {
       case "A - Z":
         return dispatch(filterPokemonAz());
