@@ -1,41 +1,65 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
-
 .container {
-  width: 300px;
-  margin: 20px auto;
   padding: 20px;
-  /* background-color: #ffcb05; */
-  border: 1px solid #f7d51d;
-  border-radius: 4px;
+  position: relative;
+}
+
+.character {
+  width: 300px;
+  padding: 20px;
+  background-color: #d6d5c9;
+  border-radius: 20px 20px 0 0 ;
+  position: relative;
+}
+
+.containerImage {
+  position: relative;
 }
 
 .title {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 24px;
-  font-weight: bold;
+  position: -ms-page;
+  font-size: 25px;
+  font-weight: lighter;
   margin-bottom: 20px;
   text-align: center;
-  color: #333333;
-}
-
-.image {
-  display: block;
-  width: 100%;
-  height: auto;
-  margin-bottom: 20px;
+  color: #0f224a;
+  font-family: "Montserrat", sans-serif;
 }
 
 .customImg {
   height: 200px;
   width: 200px;
   border-radius: 10%;
+  transition: transform 0.2s; /* Agrega una transición suave */
 }
 
+.customImg:hover {
+  transform: rotate(5deg); /* Aplica una rotación de 5 grados */
+}
+
+.customImg:hover {
+  animation: shake 0.2s; /* Agrega una animación de sacudida */
+}
+
+@keyframes shake {
+  0% {
+    transform: rotate(5deg);
+  }
+  50% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(5deg);
+  }
+}
 
 .types {
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
+  font-family: "Montserrat", sans-serif;
+  background-color: white;
+  padding: 15px;
+  border-radius: 0 0 50px 50px;
 }
 
 .type {
@@ -44,9 +68,7 @@
   margin-right: 10px;
   background-color: #ee8130;
   color: #ffffff;
-  font-family: 'Montserrat', sans-serif;
   font-size: 14px;
-  font-weight: bold;
   border-radius: 4px;
 }
 
@@ -54,10 +76,22 @@
   margin-right: 0;
 }
 
-.type:hover {
+.div {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  background-color: rgba(255, 0, 0, 0.308);
+  padding: 20px 200px 200px 0px;
+  color: rgba(255, 255, 255, 0);
+  /* border-radius: 80% 80% 80% 80%; */
+  border-radius: 9% 50% 50% 50%;
+}
+
+
+/* .type:hover {
   background-color: #ca5310;
   cursor: pointer;
-}
+} */
 
 /* Otros estilos a considerar */
 /* Agrega estilos adicionales según tus necesidades */
