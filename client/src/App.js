@@ -9,7 +9,9 @@ function App() {
 
   return (
     <div className="App">
-      {location.pathname !== "/" && <Navbar />}
+      {location.pathname !== "/" && !location.pathname.startsWith("/detail/") && (
+        <Navbar />
+      )}
       <Route exact path="/" render={() => <Landing />} />
       <Route path="/home" render={() => <Home />} />
       <Route path="/detail/:pokemonId" render={() => <Detail />} />
@@ -17,5 +19,4 @@ function App() {
     </div>
   );
 }
-
 export default App;

@@ -1,7 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import Card from "../Card/Card";
 import style from "./CardsContainer.module.css";
-// import { useState } from "react";
 import { nextPage, previousPage } from "../../redux/actions";
 
 export default function CardsContainer() {
@@ -15,12 +14,12 @@ export default function CardsContainer() {
     return state.pokemons;
   };
 
-  const dispatch = useDispatch()
-  const currentPage = useSelector(state => state.page)
+  const dispatch = useDispatch();
+  const currentPage = useSelector((state) => state.page);
   const pokemons = useSelector(selectFilteredPokemons);
-  const pokemonsPerPage = 12
+  const pokemonsPerPage = 12;
 
-  const filteredPokemon = pokemons.slice(currentPage, currentPage + pokemonsPerPage);
+  const filteredPokemon = pokemons.slice(currentPage,currentPage + pokemonsPerPage );
 
   const next = () => {
     if (filteredPokemon.length < pokemonsPerPage) {
@@ -37,8 +36,14 @@ export default function CardsContainer() {
 
   return (
     <div>
-      <button onClick={previous}>Anteriores</button>
-      <button onClick={next}>Siguientes</button>
+      <div className={style.buttonContainer}>
+        <button onClick={previous} className={style.button}>
+          Previous
+        </button>
+        <button onClick={next} className={style.button}>
+          Next
+        </button>
+      </div>
       {pokemons.length === 0 && <div>Loading...</div>}
       <div className={style.container}>
         {filteredPokemon.map((poke, index) => {

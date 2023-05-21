@@ -47,41 +47,45 @@ export default function Filters() {
     }
   };
 
+  function changeString(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  }
+
   return (
     <div>
-      <div>
+      {/* <div>
         <button onClick={handleChange} value="todos">Restore</button>
-      </div>
+      </div> */}
       <div className={style.container}>
         <div className={style.row}>
           <div className={style.column}>
-            <span className={style.label}>Alfabeticamente</span>
-            <select onChange={handleChange}>
+            <span className={style.label}>Alphabetically</span>
+            <select onChange={handleChange} className={style.select}>
               <option value="A - Z">A - Z</option>
               <option value="Z - A">Z - A</option>
             </select>
           </div>
           <div className={style.column}>
-            <span className={style.label}>Seleccion</span>
-            <select onChange={handleChange}>
-              <option value="todos">Todos</option>
-              <option value="created">Creados</option>
-              <option value="originals">Originales</option>
+            <span className={style.label}>Selection</span>
+            <select onChange={handleChange} className={style.select}>
+              <option value="todos">All</option>
+              <option value="created">Created</option>
+              <option value="originals">Originals</option>
             </select>
           </div>
           <div className={style.column}>
-            <span className={style.label}>Poder de ataque</span>
-            <select onChange={handleChange}>
+            <span className={style.label}>Attack Power</span>
+            <select onChange={handleChange} className={style.select}>
               <option value="Max - Min">Max - Min</option>
               <option value="Min - Max">Min - Max</option>
             </select>
           </div>
           <div className={style.column}>
-            <span className={style.label}>Tipos</span>
-            <select onChange={handleChange}>
+            <span className={style.label}>Types</span>
+            <select onChange={handleChange} className={style.select}>
               {types.map((type) => (
                 <option key={type.name} value={type.name}>
-                  {type.name}
+                  {changeString(type.name)}
                 </option>
               ))}
             </select>

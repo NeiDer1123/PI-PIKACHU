@@ -1,0 +1,32 @@
+.searchBar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .searchInput {
+    font-family: 'Montserrat', sans-serif;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+  }
+  
+  .searchButton {
+    padding: 10px 20px;
+    font-size: 14px;
+    background-color: rgb(255,203,5);
+    color: rgb(42,117,187);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  .searchButton:hover {
+    background-color: #e92929;
+    color: white;
+  }
+  

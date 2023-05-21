@@ -47,10 +47,5 @@
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-.navlink:active {
-    /* Estilos al ser presionado */
-    box-shadow: none; /* Remover la sombra */
-    transform: translateY(2px); /* Hacer una pequeña traslación hacia abajo */
-}
 
 

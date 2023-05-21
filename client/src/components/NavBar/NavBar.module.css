@@ -1,8 +1,29 @@
 .container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    border-radius: 15px;
-    border: 1px solid black;
-    /* width: 50px; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #0f224a;
+  padding: 15px 20px;
+  font-family: 'Montserrat', sans-serif;
 }
+
+.container a {
+  color: #e92929;
+  font-size: 20px;
+  text-decoration: none;
+  margin-right: 10px;
+}
+
+.container a:hover {
+  color: #ffffff;
+}
+
+.logo {
+  height: 80px;
+}
+
+
+
+
+
+

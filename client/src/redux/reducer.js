@@ -85,10 +85,10 @@ function rootReducer(state = initialState, action) {
       }
       
     case NEXT_PAGE:
-      return {...state, page: state.page + 5 };
+      return {...state, page: state.page + 12 };
 
     case PREVIOUS_PAGE:
-      return {...state, page: state.page - 5 };
+      return {...state, page: state.page - 12 };
 
     case RESET_PAGE:
       return {...state, page: 0 };

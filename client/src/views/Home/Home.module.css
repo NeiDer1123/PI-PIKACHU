@@ -1,0 +1,17 @@
+/* .container {
+    position: relative;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: linear-gradient(
+        to bottom right,
+        rgb(255,239,213),
+        rgb(255, 255, 255),
+        rgb(70,130,180)
+    );
+} */
