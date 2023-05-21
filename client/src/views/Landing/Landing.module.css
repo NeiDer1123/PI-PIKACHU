@@ -1,0 +1,56 @@
+.container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column; /* Cambiar la dirección de flexión a columna */
+    background: linear-gradient(
+        to bottom right,
+        rgb(70,130,180),
+        rgb(255, 255, 255),
+        rgb(70,130,180)
+    );
+}
+
+.logo {
+    border-radius: 20px;
+    margin: 20px;
+    padding: 20px;
+    position: relative;
+}
+
+.navlink {
+    background-color: rgb(255,203,5);
+    color: rgb(60,90,166);
+    padding: 7px 12px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 12px;
+    display: inline-block;
+    border: solid rgb(42,117,187) 6px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: absolute; /* Establecer posición absoluta */
+    top: 67%; /* Alinear verticalmente en el centro */
+    left: 50%; /* Alinear horizontalmente en el centro */
+    transform: translate(-50%, -50%); /* Centrar completamente el NavLink */
+    /* z-index: 5; */
+}
+
+.navlink:hover {
+    background-color: rgb(255,203,5);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.navlink:active {
+    /* Estilos al ser presionado */
+    box-shadow: none; /* Remover la sombra */
+    transform: translateY(2px); /* Hacer una pequeña traslación hacia abajo */
+}
+
+
