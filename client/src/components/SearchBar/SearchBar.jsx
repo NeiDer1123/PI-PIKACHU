@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { getPokemonById, getPokemonByName } from "../../redux/actions";
+import { getPokemonById, getPokemonByName} from "../../redux/actions";
 import style from "./SearchBar.module.css";
 
 export default function SearchBar() {
@@ -13,8 +13,8 @@ export default function SearchBar() {
 
   function handleOnclick() {
     isNaN(idOrName)
-      ? dispatch(getPokemonByName(idOrName))
-      : dispatch(getPokemonById(idOrName));
+    ? dispatch(getPokemonByName(idOrName))
+    : dispatch(getPokemonById(idOrName));
   }
 
   return (

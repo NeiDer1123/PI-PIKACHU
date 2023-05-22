@@ -1,7 +1,7 @@
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import Card from "../Card/Card";
 import style from "./CardsContainer.module.css";
-import { nextPage, previousPage } from "../../redux/actions";
+import Paginate from "../Paginate/Paginate";
 
 export default function CardsContainer() {
   const selectFilteredPokemons = (state) => {
@@ -14,49 +14,44 @@ export default function CardsContainer() {
     return state.pokemons;
   };
 
-  const dispatch = useDispatch();
   const currentPage = useSelector((state) => state.page);
-  const pokemons = useSelector(selectFilteredPokemons);
   const pokemonsPerPage = 12;
+  const pokemons = useSelector(selectFilteredPokemons);
 
-  const filteredPokemon = pokemons.slice(currentPage,currentPage + pokemonsPerPage );
-
-  const next = () => {
-    if (filteredPokemon.length < pokemonsPerPage) {
-      return;
-    }
-    dispatch(nextPage());
-  };
-
-  const previous = () => {
-    if (currentPage > 0) {
-      dispatch(previousPage());
-    }
-  };
+  const filteredPokemon = pokemons.slice(
+    currentPage,
+    currentPage + pokemonsPerPage
+  );
 
   return (
-    <div>
-      <div className={style.buttonContainer}>
-        <button onClick={previous} className={style.button}>
-          Previous
-        </button>
-        <button onClick={next} className={style.button}>
-          Next
-        </button>
-      </div>
-      {pokemons.length === 0 && <div>Loading...</div>}
-      <div className={style.container}>
-        {filteredPokemon.map((poke, index) => {
-          return (
-            <Card
-              key={index}
-              id={poke.id}
-              name={poke.name}
-              image={poke.image}
-              types={poke.types}
-            />
-          );
-        })}
+    <div className={style.containerAll}>
+      <Paginate
+        pokemonsPerPage={pokemonsPerPage}
+        filteredPokemon={filteredPokemon}
+        currentPage={currentPage}
+      />
+      <div>
+        {pokemons.length === 0 && <div>Loading...</div>}
+        <div className={style.container}>
+          {filteredPokemon.map((poke, index) => {
+            return (
+              <Card
+                key={index}
+                id={poke.id}
+                name={poke.name}
+                image={poke.image}
+                types={poke.types}
+              />
+            );
+          })}
+        </div>
+        <div>
+          <Paginate
+            pokemonsPerPage={pokemonsPerPage}
+            filteredPokemon={filteredPokemon}
+            currentPage={currentPage}
+          />
+        </div>
       </div>
     </div>
   );

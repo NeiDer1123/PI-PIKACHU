@@ -42,10 +42,10 @@ function rootReducer(state = initialState, action) {
       return { ...state, pokemons: action.payload, filteredPokemons: [], pokemon: [], filteredByType: [] };
 
     case GET_POKEMON_BY_ID:
-      return { ...state, pokemon: action.payload, pokemons: [action.payload]};
+      return { ...state, pokemon: action.payload, pokemons: [action.payload], filteredPokemons: [action.payload]};
 
     case GET_POKEMON_BY_NAME:
-      return { ...state, pokemon: action.payload, pokemons: [action.payload]};
+      return { ...state, pokemon: action.payload, pokemons: [action.payload], filteredPokemons: [action.payload]};
 
     case FILTER_A_Z:
       const pokemonsAz = pokemonsToFilter.slice().sort((a, b) => a.name.localeCompare(b.name));

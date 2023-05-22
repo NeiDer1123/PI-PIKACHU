@@ -1,0 +1,19 @@
+.attack {
+    /* background-color: #FF4136; */
+    background-color: #FF7F7F;
+}
+
+.defense {
+    /* background-color:  #0074D9; */
+    background-color: #7FBFFF  ;
+}
+
+.life {
+    /* background-color: #2ECC40; */
+    background-color: #9EFFA4 ;
+}
+
+.speed {
+    /* background-color: #FF851B ; */
+    background-color: #FFC57F ;
+}

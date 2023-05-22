@@ -1,0 +1,135 @@
+.containerAll {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.199);
+  margin-top: 10px;
+  padding: 50px;
+}
+
+.containerID {
+  background-color: rgba(0, 0, 255, 0);
+  position: relative;
+}
+
+.title {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  color: rgb(255, 255, 255);
+  background-color: rgba(0, 0, 0, 0);
+  position: relative;
+}
+
+.title h1 {
+  font-size: 200px;
+  background-color: rgba(255, 0, 0, 0);
+  margin: 5px;
+}
+
+.title h2 {
+  font-size: 70px;
+  background-color: rgba(255, 0, 0, 0);
+  margin: 5px;
+}
+
+.types {
+  display: flex;
+  justify-content: center;
+  padding: 15px;
+  border-radius: 20px;
+}
+
+.type {
+  padding: 8px 12px;
+  margin: 10px;
+  color: #ffffff;
+  font-size: 30px;
+  border-radius: 4px;
+}
+
+.container {
+  width: 80vh;
+  height: 20vh;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  background-color: rgba(129, 136, 136, 0.74);
+}
+
+.containerImage {
+  width: 80vh;
+  height: 396px;
+  background-color: rgba(255, 255, 255, 0.568);
+  position: relative;
+}
+
+.image {
+  height: 380px;
+  width: 380px;
+  border-radius: 10%;
+}
+
+.height {
+  font-size: 20px;
+  width: 150px;
+  color: rgb(0, 0, 0);
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  background-color: rgb(48, 201, 193);
+  border-radius: 0px 20px 20px 0px;
+}
+
+.weight {
+  font-size: 20px;
+  width: 150px;
+  color: rgb(0, 0, 0);
+  position: absolute;
+  bottom: 0%;
+  right: 0%;
+  background-color: rgb(48, 201, 193);
+  border-radius: 20px 0px 0px 20px;
+}
+
+.barra {
+  width: 350px;
+  height: 10px;
+  margin-top: 5px;
+  background: rgba(225, 225, 225, 0.5);
+  border-radius: 10px;
+}
+
+.span {
+  width: 100px;
+  color: white;
+}
+
+.progreso {
+  width: var(--w);
+  height: 100%;
+  /* background: rgb(255, 255, 255); */
+  border-radius: 10px;
+  animation: Aumentar 3s ease;
+}
+
+.habilidades {
+  display: flex;
+}
+
+@keyframes Aumentar {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: var(--w);
+  }
+}
+
+.points {
+    color: white;
+    width: 50px;
+    background-color: rgb(43, 88, 45);
+    margin-left: 10px;
+    border-radius: 50% 2px 2px 50%;
+}
