@@ -37,11 +37,11 @@ export default function Form() {
   });
 
   const onChangeText = (event) => {
-      setForm({ ...form, [event.target.name]: event.target.value });
-      setErrors(validate({ ...form, [event.target.name]: event.target.value }));
+      setForm({ ...form, [event.target.name]: event.target.value.toLowerCase() });
+      setErrors(validate({ ...form, [event.target.name]: event.target.value.toLowerCase() }));
   };
 
-  const onChange = (event) => {
+  const onChangeNumber = (event) => {
     setForm({ ...form, [event.target.name]: parseInt(event.target.value) });
     setErrors(validate({ ...form, [event.target.name]: parseInt(event.target.value) }));
   };
@@ -110,32 +110,32 @@ export default function Form() {
       </div>
       <div>
         <label>Life:</label>
-        <input type="number" value={form.life} name='life' onChange={onChange} />
+        <input type="number" value={form.life} name='life' onChange={onChangeNumber} />
         {errors.life && <span>{errors.life}</span>}
       </div>
       <div>
         <label>Attack:</label>
-        <input type="number" value={form.attack} name='attack' onChange={onChange} />
+        <input type="number" value={form.attack} name='attack' onChange={onChangeNumber} />
         {errors.attack && <span>{errors.attack}</span>}
       </div>
       <div>
         <label>Defense:</label>
-        <input type="number" value={form.defense} name='defense' onChange={onChange} />
+        <input type="number" value={form.defense} name='defense' onChange={onChangeNumber} />
         {errors.defense && <span>{errors.defense}</span>}
       </div>
       <div>
         <label>Speed:</label>
-        <input type="number" value={form.speed} name='speed' onChange={onChange} />
+        <input type="number" value={form.speed} name='speed' onChange={onChangeNumber} />
         {errors.speed && <span>{errors.speed}</span>}
       </div>
       <div>
         <label>Height in cm:</label>
-        <input type="number" value={form.height} name='height' onChange={onChange} />
+        <input type="number" value={form.height} name='height' onChange={onChangeNumber} />
         {errors.height && <span>{errors.height}</span>}
       </div>
       <div>
         <label>Weight in Kg:</label>
-        <input type="number" value={form.weight} name='weight' onChange={onChange} />
+        <input type="number" value={form.weight} name='weight' onChange={onChangeNumber} />
         {errors.weight && <span>{errors.weight}</span>}
       </div>
       <div>

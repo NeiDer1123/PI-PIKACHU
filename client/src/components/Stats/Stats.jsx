@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import style from "./Stats.module.css";
-import { backgorundButtons, changeString } from "../Card/functionsStyles";
-import { styleStats } from "./stylesStats";
+import { backgorundButtons, changeString } from "../../utils/functionsStyles";
+import { styleStats } from "../../utils/stylesStats";
 
 export default function Stats() {
   const pokemon = useSelector((state) => state.pokemon);
@@ -39,7 +39,7 @@ export default function Stats() {
             <div className={style.barra}>
               <div
                 className={`${style.progreso} ${styleStats("attack")}`}
-                style={{ "--w": `${(pokemon.attack * 100) / 200}%` }}
+                style={{ "--w": `${(pokemon.attack) / 2}%` }}
               ></div>
             </div>
               <span className={style.points}>{pokemon.attack}</span>
@@ -49,7 +49,7 @@ export default function Stats() {
             <div className={style.barra}>
               <div
                 className={`${style.progreso} ${styleStats("defense")}`}
-                style={{ "--w": `${(pokemon.defense * 100) / 200}%` }}
+                style={{ "--w": `${(pokemon.defense) / 2}%` }}
               ></div>
             </div>
               <span className={style.points}>{pokemon.defense}</span>
@@ -59,7 +59,7 @@ export default function Stats() {
             <div className={style.barra}>
               <div
                 className={`${style.progreso} ${styleStats("life")}`}
-                style={{ "--w": `${(pokemon.life * 100) / 200}%` }}
+                style={{ "--w": `${(pokemon.life) / 2}%` }}
               ></div>
             </div>
               <span className={style.points}>{pokemon.life}</span>
@@ -69,7 +69,7 @@ export default function Stats() {
             <div className={style.barra}>
               <div
                 className={`${style.progreso} ${styleStats("speed")}`}
-                style={{ "--w": `${(pokemon.speed * 100) / 200}%` }}
+                style={{ "--w": `${(pokemon.speed) / 2}%` }}
               ></div>
             </div>
               <span className={style.points}>{pokemon.speed}</span>

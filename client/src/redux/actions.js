@@ -13,6 +13,7 @@ import {
   NEXT_PAGE,
   PREVIOUS_PAGE,
   RESET_PAGE,
+  GET_ALL,
 } from "./actions-types";
 
 const getTypes = () => {
@@ -127,6 +128,12 @@ const resetPage = () => {
   };
 };
 
+const getAll = () => {
+  return {
+    type: GET_ALL
+  }
+}
+
 export {
   getPokemons,
   getTypes,
@@ -142,4 +149,5 @@ export {
   nextPage,
   previousPage,
   resetPage,
+  getAll
 };

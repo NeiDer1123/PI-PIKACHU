@@ -1,6 +1,6 @@
 import style from "./Card.module.css";
 import { NavLink } from "react-router-dom";
-import { backgorundButtons, backgorundDiv, changeString } from "./functionsStyles";
+import { backgorundButtons, backgorundDiv, changeString } from "../../utils/functionsStyles";
 
 
 export default function Card(props) {

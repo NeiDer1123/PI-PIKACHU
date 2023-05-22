@@ -9,7 +9,7 @@ import {
   filterMinMax,
   filterPokemonAz,
   filterPokemonZa,
-  getPokemons,
+  getAll,
   getTypes,
   resetPage
 } from "../../redux/actions";
@@ -37,7 +37,7 @@ export default function Filters() {
       case "Min - Max":
         return dispatch(filterMinMax());
       case "todos":
-        return dispatch(getPokemons());
+        return dispatch(getAll());
       case "created":
         return dispatch(filterCreated(value))
       case "originals":
@@ -53,9 +53,9 @@ export default function Filters() {
 
   return (
     <div>
-      {/* <div>
-        <button onClick={handleChange} value="todos">Restore</button>
-      </div> */}
+      <div>
+        <button className={style.resetButton} onClick={handleChange} value="todos">Restore</button>
+      </div>
       <div className={style.container}>
         <div className={style.row}>
           <div className={style.column}>
@@ -68,7 +68,7 @@ export default function Filters() {
           <div className={style.column}>
             <span className={style.label}>Selection</span>
             <select onChange={handleChange} className={style.select}>
-              <option value="todos">All</option>
+              {/* <option value="todos">All</option> */}
               <option value="created">Created</option>
               <option value="originals">Originals</option>
             </select>

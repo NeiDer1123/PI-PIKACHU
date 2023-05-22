@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
-
 .container {
     text-align: center;
     margin-bottom: 10px;
@@ -43,3 +42,20 @@
   .select:hover {
     background-color: white;
   }
+
+  .resetButton {
+    padding: 5px 10px;
+    font-size: 14px;
+    background-color: rgb(255,203,5);
+    color: rgb(42,117,187);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  .resetButton:hover {
+    background-color: #e92929;
+    color: white;
+  }
+  

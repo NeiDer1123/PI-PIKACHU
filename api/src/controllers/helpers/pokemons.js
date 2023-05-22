@@ -9,6 +9,14 @@ const countPokemons = async () => {
   return count;
 };
 
+// Obtiene la cantidad de Pokemones
+// const countPokemons = async () => {
+//   const response = await axios.get("https://pokeapi.co/api/v2/pokemon?offset=0&limit=1010");
+//   const  count  = response.data.results.length;
+//   console.log(count)
+//   return count;
+// };
+
 // Crea un Pokemon de la API
 const createPokemonApi = (data) => {
   return {
@@ -40,7 +48,6 @@ const createPokemonDb = async ({
   weight,
   types,
 }) => {
-
   // Verificar si ya existe un Pokémon con el mismo nombre
   const existingPokemon = await Pokemon.findOne({ where: { name } });
 
@@ -65,7 +72,7 @@ const createPokemonDb = async ({
 };
 
 // Encuentra a todos los pokemones creados para personalizacion
-const findAll = async () => {
+const findAllPokemons = async () => {
   const allPokemons = await Pokemon.findAll({
     include: {
       model: Type,
@@ -118,6 +125,20 @@ const findById = async (id) => {
   return modifiedPokemon;
 };
 
+// Modifico los pokemones obtenidos de mi DB para que queden igual a la API
+const modifiedPokemonsDb = async (pokemon) => {
+  const count = await countPokemons()
+  const modifiedTypes = pokemon.dataValues.Types.map((type) => type.name);
+  const modifiedPokemon = {
+    ...pokemon.dataValues,
+    id: pokemon.id + count,
+    types: modifiedTypes,
+  };
+  delete modifiedPokemon.Types;
+  
+  return modifiedPokemon;
+}
+
 // Encuentro todos los personajes de la API y DB
 const getAllPokemons = async (results) => {
   const promises = results.map(async (el) => {
@@ -126,7 +147,7 @@ const getAllPokemons = async (results) => {
     return createPokemonApi(data);
   });
 
-  const allPokemonsDataBase = await findAll();
+  const allPokemonsDataBase = await findAllPokemons();
 
   const allPokemonsApi = await Promise.all(promises);
 
@@ -135,15 +156,36 @@ const getAllPokemons = async (results) => {
   return allPokemons;
 };
 
-// Encuentro el pokemon por nombre
-const getPokemonByName = () => {};
+const searchPokemonByName = async (name, url) => {
+  const dbPokemons = await Pokemon.findAll({
+    where: { name },
+    include: {
+      model: Type,
+      attributes: ["name"],
+      through: {
+        attributes: [],
+      },
+    },
+  });
+  try {
+    const apiPokemons = await axios.get(url + name);
+    const response = apiPokemons.data;
+    const api = createPokemonApi(response);
+
+    return [...dbPokemons, api];
+  } catch (error) {
+    return [...dbPokemons];
+  }
+};
+
 
 module.exports = {
   createPokemonDb,
-  findAll,
+  findAllPokemons,
   countPokemons,
   createPokemonApi,
   findById,
   getAllPokemons,
-  getPokemonByName,
+  searchPokemonByName,
+  modifiedPokemonsDb
 };

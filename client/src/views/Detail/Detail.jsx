@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector} from "react-redux";
-import { getPokemonById } from "../../redux/actions";
+import { getPokemonById} from "../../redux/actions";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import pokebola from "../../assets/pokebola.gif";
-import Stats from "../../components/Stats/Stats";
+import { Stats } from "../../components";
 
 export default function Detail() {
   const { pokemonId } = useParams();

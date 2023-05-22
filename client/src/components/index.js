@@ -1,6 +1,6 @@
 import Navbar from "./NavBar/NavBar";
-import Card from "./Card/Card";
 import CardsContainer from "./CardsContainer/CardsContainer";
 import Filters from "./Filters/Filters";
+import Stats from "./Stats/Stats";
 
-export { Navbar, Card, CardsContainer, Filters};
+export { Navbar, CardsContainer, Filters, Stats};

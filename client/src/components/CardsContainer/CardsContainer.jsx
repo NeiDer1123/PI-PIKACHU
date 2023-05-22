@@ -2,8 +2,13 @@ import { useSelector } from "react-redux";
 import Card from "../Card/Card";
 import style from "./CardsContainer.module.css";
 import Paginate from "../Paginate/Paginate";
+import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
+import pokebola from '../../assets/pokebola.gif'
 
 export default function CardsContainer() {
+  const posicion = useLocation();
+  console.log(posicion);
+
   const selectFilteredPokemons = (state) => {
     if (state.filteredPokemons.length > 0) {
       return state.filteredPokemons;
@@ -31,7 +36,12 @@ export default function CardsContainer() {
         currentPage={currentPage}
       />
       <div>
-        {pokemons.length === 0 && <div>Loading...</div>}
+        {pokemons.length === 0 && (
+          <div>
+            {/* <div>Loading...</div> */}
+            <img src={pokebola} alt="pokebola" />
+          </div>
+        )}
         <div className={style.container}>
           {filteredPokemon.map((poke, index) => {
             return (

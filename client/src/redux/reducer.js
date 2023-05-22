@@ -9,13 +9,15 @@ import {
   FILTER_CREATED,
   NEXT_PAGE,
   PREVIOUS_PAGE,
-  RESET_PAGE} from "./actions-types";
+  RESET_PAGE,
+  GET_ALL} from "./actions-types";
 
 const initialState = {
   pokemon: [],
   pokemons: [],
   filteredPokemons: [],
   filteredByType: [],
+  general: [],
   types: [],
   page: 0
 };
@@ -39,7 +41,7 @@ function rootReducer(state = initialState, action) {
       return { ...state, types: action.payload };
 
     case GET_POKEMONS:
-      return { ...state, pokemons: action.payload, filteredPokemons: [], pokemon: [], filteredByType: [] };
+      return { ...state, pokemons: action.payload, general: action.payload};
 
     case GET_POKEMON_BY_ID:
       return { ...state, pokemon: action.payload, pokemons: [action.payload], filteredPokemons: [action.payload]};
@@ -93,8 +95,11 @@ function rootReducer(state = initialState, action) {
     case RESET_PAGE:
       return {...state, page: 0 };
 
+    case GET_ALL: 
+      return {...state, pokemons: state.general, filteredPokemons: [], pokemon: [], filteredByType: []}
+
     default:
-      return { ...state};
+      return { ...state };
   }
 }
 
