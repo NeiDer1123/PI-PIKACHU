@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { getTypes } from "../../redux/actions";
 import validate from "./validate";
 import axios from "axios";
+import style from "./Form.module.css";
+import pikachu from "../../assets/pikachu.gif";
 
 export default function Form() {
   const dispatch = useDispatch();
@@ -21,7 +23,7 @@ export default function Form() {
     defense: "",
     speed: "",
     height: "",
-    weight: ""
+    weight: "",
   });
 
   const [errors, setErrors] = useState({
@@ -33,17 +35,24 @@ export default function Form() {
     defense: "",
     speed: "",
     height: "",
-    weight: ""
+    weight: "",
   });
 
   const onChangeText = (event) => {
-      setForm({ ...form, [event.target.name]: event.target.value.toLowerCase() });
-      setErrors(validate({ ...form, [event.target.name]: event.target.value.toLowerCase() }));
+    setForm({ ...form, [event.target.name]: event.target.value.toLowerCase() });
+    setErrors(
+      validate({
+        ...form,
+        [event.target.name]: event.target.value.toLowerCase(),
+      })
+    );
   };
 
   const onChangeNumber = (event) => {
     setForm({ ...form, [event.target.name]: parseInt(event.target.value) });
-    setErrors(validate({ ...form, [event.target.name]: parseInt(event.target.value) }));
+    setErrors(
+      validate({ ...form, [event.target.name]: parseInt(event.target.value) })
+    );
   };
 
   const handleCheckboxChange = (event) => {
@@ -77,10 +86,10 @@ export default function Form() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if(errors.name || errors.life || errors.types){
-      alert('Debes cumplir con todos los requisitos para crear un Pokemon')
+    if (errors.name || errors.life || errors.types) {
+      alert("Debes cumplir con todos los requisitos para crear un Pokemon");
     } else {
-      axios.post("http://localhost:3001/pokemons", form)
+      axios.post("http://localhost:3001/pokemons", form);
       console.log(form);
       setForm({
         name: "",
@@ -91,71 +100,152 @@ export default function Form() {
         defense: "",
         speed: "",
         height: "",
-        weight: ""
-      })
+        weight: "",
+      });
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label>Name:</label>
-        <input type="text" value={form.name} name="name" onChange={onChangeText} />
-        {errors.name && <span>{errors.name}</span>}
-      </div>
-      <div>
-        <label>Image:</label>
-        <input type="text" value={form.image} name="image" onChange={onChangeText} />
-        {errors.image && <span>{errors.image}</span>}
-      </div>
-      <div>
-        <label>Life:</label>
-        <input type="number" value={form.life} name='life' onChange={onChangeNumber} />
-        {errors.life && <span>{errors.life}</span>}
-      </div>
-      <div>
-        <label>Attack:</label>
-        <input type="number" value={form.attack} name='attack' onChange={onChangeNumber} />
-        {errors.attack && <span>{errors.attack}</span>}
-      </div>
-      <div>
-        <label>Defense:</label>
-        <input type="number" value={form.defense} name='defense' onChange={onChangeNumber} />
-        {errors.defense && <span>{errors.defense}</span>}
-      </div>
-      <div>
-        <label>Speed:</label>
-        <input type="number" value={form.speed} name='speed' onChange={onChangeNumber} />
-        {errors.speed && <span>{errors.speed}</span>}
-      </div>
-      <div>
-        <label>Height in cm:</label>
-        <input type="number" value={form.height} name='height' onChange={onChangeNumber} />
-        {errors.height && <span>{errors.height}</span>}
-      </div>
-      <div>
-        <label>Weight in Kg:</label>
-        <input type="number" value={form.weight} name='weight' onChange={onChangeNumber} />
-        {errors.weight && <span>{errors.weight}</span>}
-      </div>
-      <div>
-        <label>Select Types:</label>
-        {types.map((type, index) => (
-          <div key={type.name}>
-            <label>
+    <div className={style.container}>
+      <form onSubmit={handleSubmit} className={style.form}>
+        <div className={style.formGroup}>
+          <div className={style.label}>
+            <label>Name</label>
+            <div>
               <input
-                type="checkbox"
-                value={type.name}
-                checked={form.types.includes(index + 1)}
-                onChange={handleCheckboxChange}
+                type="text"
+                value={form.name}
+                name="name"
+                onChange={onChangeText}
+                className={style.input}
               />
-              {type.name}
-            </label>
+            </div>
           </div>
-        ))}
-        {errors.types && <span>{errors.types}</span>}
+
+          <div className={style.label}>
+            <label>Image</label>
+            <div>
+              <input
+                type="text"
+                value={form.image}
+                name="image"
+                onChange={onChangeText}
+                className={style.input}
+              />
+            </div>
+          </div>
+
+          <div className={style.label}>
+            <label>Life</label>
+            <div>
+              <input
+                type="number"
+                value={form.life}
+                name="life"
+                onChange={onChangeNumber}
+                className={style.input}
+              />
+            </div>
+          </div>
+
+          <div className={style.label}>
+            <label>Attack</label>
+            <div>
+              <input
+                type="number"
+                value={form.attack}
+                name="attack"
+                onChange={onChangeNumber}
+                className={style.input}
+              />
+            </div>
+          </div>
+
+          <div className={style.label}>
+            <label>Defense</label>
+            <div>
+              <input
+                type="number"
+                value={form.defense}
+                name="defense"
+                onChange={onChangeNumber}
+                className={style.input}
+              />
+            </div>
+          </div>
+
+          <div className={style.label}>
+            <label>Speed</label>
+            <div>
+              <input
+                type="number"
+                value={form.speed}
+                name="speed"
+                onChange={onChangeNumber}
+                className={style.input}
+              />
+            </div>
+          </div>
+
+          <div className={style.label}>
+            <label>Height in cm</label>
+            <div>
+              <input
+                type="number"
+                value={form.height}
+                name="height"
+                onChange={onChangeNumber}
+                className={style.input}
+              />
+            </div>
+          </div>
+
+          <div className={style.label}>
+            <label>Weight in Kg</label>
+            <div>
+              <input
+                type="number"
+                value={form.weight}
+                name="weight"
+                onChange={onChangeNumber}
+                className={style.input}
+              />
+            </div>
+          </div>
+        </div>
+        <div>
+          <div className={style.types}>
+            {types.map((type, index) => (
+              <div key={type.name}>
+                  <input
+                    type="checkbox"
+                    value={type.name}
+                    checked={form.types.includes(index + 1)}
+                    onChange={handleCheckboxChange}
+                  />
+                <label className={style.labelType}>
+                  {type.name}
+                </label>
+              </div>
+            ))}
+          </div>
+          <div className={style.errors}>
+            {errors.name && <p className={style.error}> - {errors.name}</p>}
+            {errors.image && <p className={style.error}> - {errors.image}</p>}
+            {errors.life && <p className={style.error}> - {errors.life}</p>}
+            {errors.attack && <p className={style.error}> - {errors.attack}</p>}
+            {errors.defense && <p className={style.error}> - {errors.defense}</p>}
+            {errors.speed && <p className={style.error}> - {errors.speed}</p>}
+            {errors.height && <p className={style.error}> - {errors.height}</p>}
+            {errors.weight && <p className={style.error}> - {errors.weight}</p>}
+            {errors.types && <p className={style.error}> - {errors.types}</p>}
+          </div>
+        </div>
+        <input type="submit" value="Submit" className={style.submit} />
+      </form>
+      <div className={style.imageContainer}>
+        <img className={style.image} src={pikachu} alt="pikachu" />
       </div>
-      <input type="submit" value="Submit" />
-    </form>
+    </div>
   );
 }

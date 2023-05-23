@@ -8,28 +8,28 @@ export default function validate(form) {
     errors.name = "Debe contener máximo 10 caracteres";
   }
   if (form.life <= 0) {
-    errors.life = "Debes asignarle un numero";
+    errors.life = "Debes asignarle un numero de Vida";
   }
   if (form.attack <= 0) {
-    errors.attack = "Debes asignarle un numero";
+    errors.attack = "Debes asignarle un numero de Ataque";
   }
   if (form.defense <= 0) {
-    errors.defense = "Debes asignarle un numero";
+    errors.defense = "Debes asignarle un numero de Defensa";
   }
   if (form.speed <= 0) {
-    errors.speed = "Debes asignarle un numero";
+    errors.speed = "Debes asignarle un numero de Velocidad";
   }
   if (form.life > 100) {
-    errors.life = "No puede ser mayor a 100";
+    errors.life = "La vida no puede ser mayor a 100";
   }
   if (form.attack > 100) {
-    errors.attack = "No puede ser mayor a 100";
+    errors.attack = "El ataque no puede ser mayor a 100";
   }
   if (form.defense > 100) {
-    errors.defense = "No puede ser mayor a 100";
+    errors.defense = "La defensa no puede ser mayor a 100";
   }
   if (form.speed > 100) {
-    errors.speed = "No puede ser mayor a 100";
+    errors.speed = "La velocidad no puede ser mayor a 100";
   }
   if (form.types.length < 2) {
     errors.types = "Debe contener por lo menos 2 tipos";
