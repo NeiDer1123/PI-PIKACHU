@@ -13,6 +13,7 @@ const NEXT_PAGE = "NEXT_PAGE";
 const PREVIOUS_PAGE = "PREVIOUS_PAGE";
 const RESET_PAGE = "RESET_PAGE";
 const GET_ALL = "GET_ALL"
+const RESTORE = "RESTORE"
 
 
 export {
@@ -30,5 +31,6 @@ export {
   NEXT_PAGE,
   PREVIOUS_PAGE,
   RESET_PAGE,
-  GET_ALL
+  GET_ALL,
+  RESTORE
 };

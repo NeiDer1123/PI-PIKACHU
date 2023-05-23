@@ -14,6 +14,7 @@ import {
   PREVIOUS_PAGE,
   RESET_PAGE,
   GET_ALL,
+  RESTORE,
 } from "./actions-types";
 
 const getTypes = () => {
@@ -134,6 +135,12 @@ const getAll = () => {
   }
 }
 
+const restore = () => {
+  return {
+    type: RESTORE
+  }
+}
+
 export {
   getPokemons,
   getTypes,
@@ -149,5 +156,6 @@ export {
   nextPage,
   previousPage,
   resetPage,
-  getAll
+  getAll,
+  restore
 };

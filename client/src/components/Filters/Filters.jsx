@@ -9,9 +9,9 @@ import {
   filterMinMax,
   filterPokemonAz,
   filterPokemonZa,
-  getAll,
   getTypes,
-  resetPage
+  resetPage,
+  restore
 } from "../../redux/actions";
 
 export default function Filters() {
@@ -37,7 +37,7 @@ export default function Filters() {
       case "Min - Max":
         return dispatch(filterMinMax());
       case "todos":
-        return dispatch(getAll());
+        return dispatch(restore());
       case "created":
         return dispatch(filterCreated(value))
       case "originals":
