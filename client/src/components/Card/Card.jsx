@@ -1,9 +1,19 @@
 import style from "./Card.module.css";
 import { NavLink } from "react-router-dom";
 import { backgorundButtons, backgorundDiv, changeString } from "../../utils/functionsStyles";
+import { useDispatch } from "react-redux";
+import { filterByType } from "../../redux/actions";
+import { resetPage } from "../../redux/actions";
 
 
 export default function Card(props) {
+
+  const dispatch = useDispatch()
+
+  const onClick = (e) => {
+    dispatch(resetPage())
+    dispatch(filterByType(e.target.name))
+  }
 
   return (
     <div className={style.container}>
@@ -22,12 +32,14 @@ export default function Card(props) {
       </div>
       <div className={style.types}>
         {props.types.map((type) => (
-          <span
+          <button
             key={type}
+            name={type}
             className={`${style.type} ${backgorundButtons(type)}`}
+            onClick={(e)=> onClick(e)}
           >
             {changeString(type)}
-          </span>
+          </button>
         ))}
       </div>
     </div>

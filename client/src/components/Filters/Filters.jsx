@@ -10,6 +10,7 @@ import {
   filterPokemonAz,
   filterPokemonZa,
   getTypes,
+  resetPage,
   restore
 } from "../../redux/actions";
 
@@ -23,7 +24,7 @@ export default function Filters() {
 
   const handleChange = (event) => {
     const { value } = event.target;
-    // dispatch(restore())
+    dispatch(resetPage())
     switch (value) {
       case "A - Z":
         return dispatch(filterPokemonAz());
@@ -68,8 +69,8 @@ export default function Filters() {
             <span className={style.label}>Selection</span>
             <select onChange={handleChange} className={style.select}>
               {/* <option value="todos">All</option> */}
-              <option value="created">Created</option>
               <option value="originals">Originals</option>
+              <option value="created">Created</option>
             </select>
           </div>
           <div className={style.column}>

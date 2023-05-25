@@ -68,7 +68,7 @@ function rootReducer(state = initialState, action) {
       return { ...state, filteredPokemons: pokemonsMinMax };
 
     case FILTER_BY_TYPE:
-      const pokemonsByType = state.pokemons.filter((pokemon) => {
+      const pokemonsByType = state.general.filter((pokemon) => {
         return pokemon.types.includes(action.payload);
       });
       return { ...state, filteredPokemons: pokemonsByType, filteredByType: pokemonsByType  };
