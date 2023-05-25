@@ -27,14 +27,19 @@
   width: 300px;
   height: 50px;
   font-size: 19px;
+  font-weight: bold;
 }
 
 .input {
-  background-color: #ffffff5d;
+  background-color: #a19f9f5d;
   border-radius: 20px;
   font-family: "Montserrat", sans-serif;
   width: 200px;
-  border: solid #0f224a 1px;
+  border: solid #0f224a 0px;
+}
+
+.input:hover {
+  background-color: #a19f9fd2;
 }
 
 .errors {
@@ -43,7 +48,7 @@
   flex-direction: column;
   margin: 0;
   height: 170px;
-  background-color: #e3e8ecde;
+  background-color: #e3e8ece7;
   position: relative;
 }
 
@@ -81,7 +86,7 @@
   justify-content: center;
   align-items: center;
   flex-wrap: wrap; /* Permitir envolver los elementos en varias líneas */
-  background-color: #567088a4;
+  background-color: #567088e0;
   width: 500px;
   height: 230px;
   margin-top: 50px;
