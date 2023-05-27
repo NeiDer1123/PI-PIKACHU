@@ -19,23 +19,23 @@ export default function validate(form) {
   if (form.speed <= 0) {
     errors.speed = "Debes asignarle un numero de Velocidad";
   }
-  if (form.life > 100) {
-    errors.life = "La vida no puede ser mayor a 100";
+  if (form.life > 200) {
+    errors.life = "La vida no puede ser mayor a 200";
   }
-  if (form.attack > 100) {
-    errors.attack = "El ataque no puede ser mayor a 100";
+  if (form.attack > 200) {
+    errors.attack = "El ataque no puede ser mayor a 200";
   }
-  if (form.defense > 100) {
-    errors.defense = "La defensa no puede ser mayor a 100";
+  if (form.defense > 200) {
+    errors.defense = "La defensa no puede ser mayor a 200";
   }
-  if (form.speed > 100) {
-    errors.speed = "La velocidad no puede ser mayor a 100";
+  if (form.speed > 200) {
+    errors.speed = "La velocidad no puede ser mayor a 200";
   }
   if (form.types.length < 2) {
     errors.types = "Debe contener por lo menos 2 tipos";
   }
-  if (form.types.length > 4) {
-    errors.types = "Debe contener maximo 4 tipos";
+  if (form.types.length > 3) {
+    errors.types = "Debe contener maximo 3 tipos";
   }
   if (form.image.length > 255){
     errors.image = "La URL supera el limite de caracteres"

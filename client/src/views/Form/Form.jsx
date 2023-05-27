@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getTypes } from "../../redux/actions";
+import { getPokemons, getTypes } from "../../redux/actions";
 import validate from "./validate";
 import axios from "axios";
 import style from "./Form.module.css";
@@ -84,12 +84,13 @@ export default function Form() {
     }
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     if (errors.name || errors.life || errors.types) {
       alert("Debes cumplir con todos los requisitos para crear un Pokemon");
     } else {
-      axios.post("http://localhost:3001/pokemons", form);
+      await axios.post("http://localhost:3001/pokemons", form);
+      dispatch(getPokemons())
       console.log(form);
       setForm({
         name: "",
@@ -102,6 +103,7 @@ export default function Form() {
         height: "",
         weight: "",
       });
+      alert("¡Pokemon Creado!")
     }
   };
 

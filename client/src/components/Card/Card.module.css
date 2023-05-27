@@ -29,15 +29,15 @@
   height: 200px;
   width: 200px;
   border-radius: 10%;
-  transition: transform 0.2s; /* Agrega una transición suave */
+  transition: transform 0.2s;
 }
 
 .customImg:hover {
-  transform: rotate(5deg); /* Aplica una rotación de 5 grados */
+  transform: rotate(5deg); 
 }
 
 .customImg:hover {
-  animation: shake 0.2s; /* Agrega una animación de sacudida */
+  animation: shake 0.2s; 
 }
 
 @keyframes shake {
