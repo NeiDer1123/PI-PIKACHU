@@ -89,21 +89,25 @@ export default function Form() {
     if (errors.name || errors.life || errors.types) {
       alert("Debes cumplir con todos los requisitos para crear un Pokemon");
     } else {
-      await axios.post("http://localhost:3001/pokemons", form);
-      dispatch(getPokemons())
-      console.log(form);
-      setForm({
-        name: "",
-        life: "",
-        image: "",
-        types: [],
-        attack: "",
-        defense: "",
-        speed: "",
-        height: "",
-        weight: "",
-      });
-      alert("¡Pokemon Creado!")
+      try {
+        await axios.post("http://localhost:3001/pokemons", form);
+        dispatch(getPokemons())
+        console.log(form);
+        setForm({
+          name: "",
+          life: "",
+          image: "",
+          types: [],
+          attack: "",
+          defense: "",
+          speed: "",
+          height: "",
+          weight: "",
+        });
+        alert("¡Pokemon Creado!")
+      } catch (error) {
+        alert(error.response.data.error)
+      }
     }
   };
 
