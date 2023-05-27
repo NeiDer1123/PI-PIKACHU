@@ -3,19 +3,19 @@ const { searchTypes } = require("./types");
 const axios = require("axios");
 
 // Obtiene la cantidad de Pokemones
-const countPokemons = async () => {
-  const response = await axios.get("https://pokeapi.co/api/v2/pokemon");
-  const { count } = response.data;
-  return count;
-};
-
-// Obtiene la cantidad de Pokemones
 // const countPokemons = async () => {
-//   const response = await axios.get("https://pokeapi.co/api/v2/pokemon?offset=0&limit=1010");
-//   const  count  = response.data.results.length;
-//   console.log(count)
+//   const response = await axios.get("https://pokeapi.co/api/v2/pokemon");
+//   const { count } = response.data;
 //   return count;
 // };
+
+// Obtiene la cantidad de Pokemones
+const countPokemons = async () => {
+  const response = await axios.get("https://pokeapi.co/api/v2/pokemon?offset=0&limit=300");
+  const  count  = response.data.results.length;
+  console.log(count)
+  return count;
+};
 
 // Crea un Pokemon de la API
 const createPokemonApi = (data) => {

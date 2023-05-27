@@ -8,6 +8,9 @@ async function getPokByName(req, res) {
 
     const response = await searchPokemonByName(searchName, URL)
 
+    if (response.length === 0) {
+      throw new Error("No se encontró ningún Pokémon con ese nombre");
+    }
     if(response[0].created){
       const pokemonModified = await modifiedPokemonsDb(response[0])
       res.status(200).json([pokemonModified])
