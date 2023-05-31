@@ -57,6 +57,8 @@ export default function Form() {
 
   const handleCheckboxChange = (event) => {
     const { value, checked } = event.target;
+    // console.log(checked)
+    // console.log(form.types)
     if (checked) {
       const typeIndex = types.findIndex((type) => type.name === value);
       setForm({
@@ -226,7 +228,7 @@ export default function Form() {
                   <input
                     type="checkbox"
                     value={type.name}
-                    checked={form.types.includes(index + 1)}
+                    // checked={form.types.includes(index + 1)}
                     onChange={handleCheckboxChange}
                   />
                 <label className={style.labelType}>
