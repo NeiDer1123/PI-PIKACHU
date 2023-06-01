@@ -1,4 +1,5 @@
 import axios from "axios";
+import Swal from "sweetalert2"
 import {
   GET_POKEMONS,
   GET_TYPES,
@@ -51,7 +52,11 @@ const getPokemonById = (id) => {
         payload: pokemon,
       });
     } catch (error) {
-      alert(error.response.data.error);
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: error.response.data.error,
+      })
     }
   };
 };
@@ -69,7 +74,11 @@ const getPokemonByName = (name) => {
       });
     } catch (error) {
       console.log(error);
-      alert(error.response.data.error);
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: error.response.data.error,
+      })
     }
   };
 };

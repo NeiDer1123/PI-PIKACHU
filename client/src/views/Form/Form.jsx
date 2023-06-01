@@ -5,6 +5,7 @@ import validate from "./validate";
 import axios from "axios";
 import style from "./Form.module.css";
 import pikachu from "../../assets/pikachu.gif";
+import Swal from "sweetalert2"
 
 export default function Form() {
   const dispatch = useDispatch();
@@ -89,7 +90,12 @@ export default function Form() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (errors.name || errors.life || errors.types) {
-      alert("Debes cumplir con todos los requisitos para crear un Pokemon");
+      // alert("Debes cumplir con todos los requisitos para crear un Pokemon");
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: "Debes cumplir con todos los requisitos para crear un Pokemon.",
+      })
     } else {
       try {
         await axios.post("http://localhost:3001/pokemons", form);
@@ -106,9 +112,18 @@ export default function Form() {
           height: "",
           weight: "",
         });
-        alert("¡Pokemon Creado!")
+        Swal.fire(
+          'Good job!',
+          '!Creaste un Pokemon!',
+          'success'
+        )
       } catch (error) {
-        alert(error.response.data.error)
+        // alert(error.response.data.error)
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: error.response.data.error,
+        })
       }
     }
   };
