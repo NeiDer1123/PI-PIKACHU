@@ -11,7 +11,9 @@ import {
   PREVIOUS_PAGE,
   RESET_PAGE,
   GET_ALL,
-  RESTORE} from "./actions-types";
+  RESTORE,
+  SET_PAGE,
+  SET_INPUT} from "./actions-types";
 
 const initialState = {
   pokemon: [],
@@ -20,7 +22,8 @@ const initialState = {
   filteredByType: [],
   general: [],
   types: [],
-  page: 0
+  page: 1,
+  inputPage: 1
 };
 
 // Me permite obtener el estado que deseo.
@@ -89,13 +92,19 @@ function rootReducer(state = initialState, action) {
       }
       
     case NEXT_PAGE:
-      return {...state, page: state.page + 12 };
+      return {...state, page: state.page + 1, inputPage: parseInt(state.inputPage)  + 1 };
 
     case PREVIOUS_PAGE:
-      return {...state, page: state.page - 12 };
+      return {...state, page: state.page - 1, inputPage: parseInt(state.inputPage) - 1 };
+
+    case SET_PAGE:
+      return {...state, page: action.payload}
+
+    case SET_INPUT:
+      return {...state, inputPage: action.payload}
 
     case RESET_PAGE:
-      return {...state, page: 0 };
+      return {...state, page: 1, inputPage: 1};
 
     case GET_ALL: 
     if(state.filteredPokemons.length > 0){
@@ -113,78 +122,3 @@ function rootReducer(state = initialState, action) {
 }
 
 export default rootReducer;
-
-
-
-
-// function rootReducer(state = initialState, action) {
-
-//   let pokemonsToFilter = pokemonsFilter(state);
-
-//   switch (action.type) {
-//     case GET_TYPES:
-//       return { ...state, types: action.payload };
-
-//     case GET_POKEMONS:
-//       return { ...state, pokemons: action.payload, general: action.payload};
-
-//     case GET_POKEMON_BY_ID:
-//       return { ...state, pokemon: action.payload, pokemons: [action.payload], filteredPokemons: [action.payload]};
-
-//     case GET_POKEMON_BY_NAME:
-//       return { ...state, pokemon: action.payload, pokemons: [action.payload], filteredPokemons: [action.payload]};
-
-//     case FILTER_A_Z:
-//       const pokemonsAz = pokemonsToFilter.slice().sort((a, b) => a.name.localeCompare(b.name));
-//       return { ...state, filteredPokemons: pokemonsAz };
-
-//     case FILTER_Z_A:
-//       const pokemonsZa = pokemonsToFilter.slice().sort((a, b) => a.name.localeCompare(b.name)).reverse();
-//       return { ...state, filteredPokemons: pokemonsZa };
-
-//     case FILTER_MAX_MIN:
-//       const pokemonsMaxMin = pokemonsToFilter.slice().sort((a, b) => b.attack - a.attack);
-//       return { ...state, filteredPokemons: pokemonsMaxMin };
-
-//     case FILTER_MIN_MAX:
-//       const pokemonsMinMax = pokemonsToFilter.slice().sort((a, b) => b.attack - a.attack).reverse();
-//       return { ...state, filteredPokemons: pokemonsMinMax };
-
-//     case FILTER_BY_TYPE:
-//       const pokemonsByType = state.pokemons.filter((pokemon) => {
-//         return pokemon.types.includes(action.payload);
-//       });
-//       return { ...state, filteredPokemons: pokemonsByType, filteredByType: pokemonsByType  };
-    
-//     case FILTER_CREATED:
-//       if(action.payload === "created" ){
-//         if (state.filteredByType.length <= 0){
-//           return { ...state, filteredPokemons: state.pokemons.filter((pokemon)=> pokemon.created === true) };
-//         } else {
-//           return { ...state, filteredPokemons: pokemonsToFilter.filter((pokemon)=> pokemon.created === true) };
-//         }
-//       } else {
-//         if (state.filteredByType.length <= 0){
-//           return { ...state, filteredPokemons: state.pokemons.filter((pokemon)=> pokemon.created === false) };
-//         } else {
-//           return { ...state, filteredPokemons: pokemonsToFilter.filter((pokemon)=> pokemon.created === false) };
-//         }
-//       }
-      
-//     case NEXT_PAGE:
-//       return {...state, page: state.page + 12 };
-
-//     case PREVIOUS_PAGE:
-//       return {...state, page: state.page - 12 };
-
-//     case RESET_PAGE:
-//       return {...state, page: 0 };
-
-//     case GET_ALL: 
-//       return {...state, pokemons: state.general, filteredPokemons: [], pokemon: [], filteredByType: []}
-
-//     default:
-//       return { ...state };
-//   }
-// }
-

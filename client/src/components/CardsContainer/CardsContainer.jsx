@@ -2,13 +2,9 @@ import { useSelector } from "react-redux";
 import Card from "../Card/Card";
 import style from "./CardsContainer.module.css";
 import Paginate from "../Paginate/Paginate";
-import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
-import pokebola from '../../assets/pokebola.gif'
+import pokebola from "../../assets/pokebola.gif";
 
 export default function CardsContainer() {
-  const posicion = useLocation();
-  console.log(posicion);
-
   const selectFilteredPokemons = (state) => {
     if (state.filteredPokemons.length > 0) {
       return state.filteredPokemons;
@@ -22,18 +18,17 @@ export default function CardsContainer() {
   const currentPage = useSelector((state) => state.page);
   const pokemonsPerPage = 12;
   const pokemons = useSelector(selectFilteredPokemons);
+  const maximo = Math.ceil(pokemons.length / pokemonsPerPage);
 
   const filteredPokemon = pokemons.slice(
-    currentPage,
-    currentPage + pokemonsPerPage
+    (currentPage - 1) * pokemonsPerPage,
+    (currentPage - 1) * pokemonsPerPage + pokemonsPerPage
   );
 
   return (
     <div className={style.containerAll}>
       <Paginate
-        pokemonsPerPage={pokemonsPerPage}
-        filteredPokemon={filteredPokemon}
-        currentPage={currentPage}
+        maximo={maximo} //
       />
       <div>
         {pokemons.length === 0 && (
@@ -57,9 +52,7 @@ export default function CardsContainer() {
         </div>
         <div>
           <Paginate
-            pokemonsPerPage={pokemonsPerPage}
-            filteredPokemon={filteredPokemon}
-            currentPage={currentPage}
+            maximo={maximo} //
           />
         </div>
       </div>

@@ -15,6 +15,8 @@ import {
   RESET_PAGE,
   GET_ALL,
   RESTORE,
+  SET_PAGE,
+  SET_INPUT,
 } from "./actions-types";
 
 const getTypes = () => {
@@ -66,7 +68,7 @@ const getPokemonByName = (name) => {
         payload: pokemon,
       });
     } catch (error) {
-      console.log(error)
+      console.log(error);
       alert(error.response.data.error);
     }
   };
@@ -124,6 +126,20 @@ const previousPage = () => {
   };
 };
 
+const setPage = (page) => {
+  return {
+    type: SET_PAGE,
+    payload: page,
+  };
+};
+
+const setInput = (page) => {
+  return {
+    type: SET_INPUT,
+    payload: page,
+  };
+};
+
 const resetPage = () => {
   return {
     type: RESET_PAGE,
@@ -132,15 +148,15 @@ const resetPage = () => {
 
 const getAll = () => {
   return {
-    type: GET_ALL
-  }
-}
+    type: GET_ALL,
+  };
+};
 
 const restore = () => {
   return {
-    type: RESTORE
-  }
-}
+    type: RESTORE,
+  };
+};
 
 export {
   getPokemons,
@@ -156,7 +172,9 @@ export {
   filterCreated,
   nextPage,
   previousPage,
+  setPage,
+  setInput,
   resetPage,
   getAll,
-  restore
+  restore,
 };
