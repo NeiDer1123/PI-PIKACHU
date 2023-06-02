@@ -36,12 +36,14 @@ export default function Filters() {
         return dispatch(filterMaxMin());
       case "Min - Max":
         return dispatch(filterMinMax());
-      case "todos":
+      case "allPokemons":
         return dispatch(restore());
+      case "all":
+        return dispatch(filterCreated(value));
       case "created":
-        return dispatch(filterCreated(value))
+        return dispatch(filterCreated(value));
       case "originals":
-        return dispatch(filterCreated(value))
+        return dispatch(filterCreated(value));
       default:
         return dispatch(filterByType(value));
     }
@@ -54,7 +56,7 @@ export default function Filters() {
   return (
     <div>
       <div>
-        <button className={style.resetButton} onClick={handleChange} value="todos">Restore</button>
+        <button className={style.resetButton} onClick={handleChange} value="allPokemons">Restore</button>
       </div>
       <div className={style.container}>
         <div className={style.row}>
@@ -68,7 +70,7 @@ export default function Filters() {
           <div className={style.column}>
             <span className={style.label}>Selection</span>
             <select onChange={handleChange} className={style.select}>
-              {/* <option value="todos">All</option> */}
+              <option value="all">All</option>
               <option value="originals">Originals</option>
               <option value="created">Created</option>
             </select>

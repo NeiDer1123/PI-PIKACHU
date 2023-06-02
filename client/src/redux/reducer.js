@@ -1,3 +1,4 @@
+import { filterByType } from "./actions";
 import { 
   GET_POKEMONS,
   GET_TYPES,
@@ -103,12 +104,14 @@ function rootReducer(state = initialState, action) {
         } else {
           return { ...state, filteredPokemons: pokemonsToFilter.filter((pokemon)=> pokemon.created === true) };
         }
-      } else {
+      } else if (action.payload === "originals") {
         if (state.filteredByType.length === 0){
           return { ...state, filteredPokemons: state.pokemons.filter((pokemon)=> pokemon.created === false) };
         } else {
           return { ...state, filteredPokemons: pokemonsToFilter.filter((pokemon)=> pokemon.created === false) };
-        }
+        } 
+      } else {
+        return {...state, filteredPokemons: state.filteredByType}
       }
       
     case NEXT_PAGE:
