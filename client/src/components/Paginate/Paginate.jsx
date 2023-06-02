@@ -7,10 +7,12 @@ export default function Paginate({ maximo }) {
   const inputPage = useSelector((state) => state.inputPage);
 
   const next = () => {
+    if (parseInt(inputPage) === maximo) return;
     dispatch(nextPage());
   };
 
   const previous = () => {
+    if (parseInt(inputPage) === 1) return;
     dispatch(previousPage());
   };
 
