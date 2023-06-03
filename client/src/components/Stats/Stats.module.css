@@ -10,7 +10,7 @@
 
 .logo {
   position: absolute;
-  width: 200px;
+  width: 15vw;
   top: 1%;
   left: 1%;
   padding: 10px;
@@ -38,14 +38,14 @@
   position: relative;
 }
 
-.title h1 {
-  font-size: 200px;
+.title h2 {
+  font-size: 16vw;
   background-color: rgba(255, 0, 0, 0);
   margin: 5px;
 }
 
-.title h2 {
-  font-size: 70px;
+.title h1 {
+  font-size: 7vw;
   background-color: rgba(255, 0, 0, 0);
   margin: 5px;
 }
@@ -61,29 +61,23 @@
   padding: 8px 12px;
   margin: 10px;
   color: #ffffff;
-  font-size: 30px;
+  font-size: 2vw;
   border-radius: 4px;
 }
 
-.container {
-  width: 80vh;
-  height: 20vh;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  background-color: rgba(129, 136, 136, 0.74);
-}
 
 .containerImage {
-  width: 80vh;
-  height: 396px;
+  display: flex;
+  justify-content: center;
+  width: 38vw;
+  /* height: 62vh; */
   background-color: rgba(255, 255, 255, 0.568);
   position: relative;
 }
 
 .image {
-  height: 380px;
-  width: 380px;
+  padding: 1vw 2vw 1vw 2vw ;
+  height: 27vw;
   border-radius: 10%;
   transition: transform 0.2s ease;
 }
@@ -96,9 +90,18 @@
   transform: scale(0.95);
 }
 
+.container {
+  width: 38vw;
+  height: 10vw;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  background-color: rgba(129, 136, 136, 0.74);
+}
+
 .height {
-  font-size: 20px;
-  width: 150px;
+  font-size: 1.4vw;
+  width: 23vh;
   color: rgb(0, 0, 0);
   position: absolute;
   top: 0%;
@@ -108,8 +111,8 @@
 }
 
 .weight {
-  font-size: 20px;
-  width: 150px;
+  font-size: 1.4vw;
+  width: 23vh;
   color: rgb(0, 0, 0);
   position: absolute;
   bottom: 0%;
@@ -118,23 +121,24 @@
   border-radius: 20px 0px 0px 20px;
 }
 
+
 .barra {
-  width: 350px;
-  height: 10px;
-  margin-top: 5px;
+  width: 26vw;
+  height: 0.7vw;
+  margin-top: 1vh;
   background: rgba(225, 225, 225, 0.5);
   border-radius: 10px;
 }
 
 .span {
-  width: 100px;
+  font-size: 1.2vw;
+  width: 7vw;
   color: white;
 }
 
 .progreso {
   width: var(--w);
   height: 100%;
-  /* background: rgb(255, 255, 255); */
   border-radius: 10px;
   animation: Aumentar 3s ease;
 }
@@ -153,9 +157,11 @@
 }
 
 .points {
+    font-size: 1.2vw;
     color: white;
-    width: 50px;
+    width: 4vw;
     background-color: rgb(43, 88, 45);
-    margin-left: 10px;
+    margin-left: 0.7vw;
     border-radius: 50% 2px 2px 50%;
 }
+

@@ -15,8 +15,8 @@ export default function Stats() {
       </Link>
       <div className={style.containerID}>
         <div className={style.title}>
-          <h1>#{pokemon.id}</h1>
-          <h2>{changeString(pokemon.name)}</h2>
+          <h2>#{pokemon.id}</h2>
+          <h1>{changeString(pokemon.name)}</h1>
         </div>
         <div className={style.types}>
           {pokemon.types.map((type) => (

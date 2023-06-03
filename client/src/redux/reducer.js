@@ -1,4 +1,3 @@
-import { filterByType } from "./actions";
 import { 
   GET_POKEMONS,
   GET_TYPES,
