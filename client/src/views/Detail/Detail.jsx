@@ -4,6 +4,7 @@ import { getPokemonById} from "../../redux/actions";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import pokebola from "../../assets/pokebola.gif";
 import { Stats } from "../../components";
+import style from "./Detail.module.css"
 
 export default function Detail() {
   const { pokemonId } = useParams();
@@ -17,7 +18,7 @@ export default function Detail() {
   return (
     <div>
       {pokemon.length <= 0 ? (
-        <div>
+        <div className={style.container}>
           {/* <div>Loading...</div> */}
           <img src={pokebola} alt="pokebola" />
         </div>

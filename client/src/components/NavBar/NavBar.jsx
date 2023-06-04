@@ -19,13 +19,15 @@ export default function Navbar() {
         <NavLink to="/home" onClick={handlerClick}>
           <img className={style.logo} src={logo} alt="logo" />
         </NavLink>
-        <div className={style.navLinks}></div>
         <Filters />
         <div>
           <SearchBar />
           <br />
-          <NavLink to="/create" className={style.create}>¡Create your Pokémon!</NavLink>
+          <NavLink to="/create" className={style.create}>
+            ¡Create your Pokémon!
+          </NavLink>
         </div>
+        {/* <div className={style.navLinks}></div> */}
       </div>
     </div>
   );
