@@ -1,5 +1,6 @@
 .container {
   display: flex;
+  justify-content: center;
   align-items: center;
   position: relative;
 }
@@ -12,10 +13,11 @@
 
 .formGroup {
   display: flex;
+  justify-content: center;
   flex-direction: column;
-  margin-left: 100px;
-  width: 300px;
-  margin-top: 50px;
+  width: 22vw;
+  height: 29.3vw;
+  margin-top: 3.7vw;
   position: relative;
   border-radius: 20px 0 0 20px;
   background-color: rgba(255, 255, 255, 0.904);
@@ -24,9 +26,9 @@
 .label {
   color: #0f224a;
   margin-right: 10px;
-  width: 300px;
-  height: 50px;
-  font-size: 19px;
+  /* width: 300px; */
+  /* height: 50px; */
+  font-size: 1.4vw;
   font-weight: bold;
 }
 
@@ -34,8 +36,9 @@
   background-color: #a19f9f5d;
   border-radius: 20px;
   font-family: "Montserrat", sans-serif;
-  width: 200px;
-  border: solid #0f224a 0px;
+  width: 18vw;
+  height: 1vw;
+  border: solid 0px;
 }
 
 .input:hover {
@@ -46,25 +49,26 @@
   display: flex;
   align-items: flex-start;
   flex-direction: column;
-  margin: 0;
-  height: 170px;
+  /* margin: 0; */
+  height: 12.5vw;
   background-color: #e3e8ece7;
   position: relative;
 }
 
 .error {
+  font-size: 1.2vw;
   color: #e92929;
-  margin: 2px;
+  margin: 0.1vw;
 }
 
 .image {
-  height: 480px;
+  height: 35vw;
   margin: 0;
 }
 
 .submit {
-  padding: 10px 20px;
-  font-size: 20px;
+  padding: 0.8vw 1.5vw;
+  font-size: 1.5vw;
   background-color: rgb(255, 203, 5);
   color: rgb(42, 117, 187);
   border: none;
@@ -73,7 +77,7 @@
   font-family: "Montserrat", sans-serif;
   position: absolute;
   top: 89%;
-  left: 87%;
+  left: 86%;
 }
 
 .submit:hover {
@@ -87,15 +91,20 @@
   align-items: center;
   flex-wrap: wrap; /* Permitir envolver los elementos en varias líneas */
   background-color: #567088e0;
-  width: 500px;
-  height: 230px;
-  margin-top: 50px;
+  width: 40vw;
+  height: 16.8vw;
+  margin-top: 3.7vw;
   border-radius: 0 20px 0 0;
 }
 
 .types > div {
   width: 20%; /* Establecer el ancho de cada columna al 25% */
   padding: 3px; /* Añadir un espacio entre los elementos */
+  font-size: 1.2vw;
+}
+
+.types > div > input {
+  height: 1vw;
 }
 
 .labelType {
