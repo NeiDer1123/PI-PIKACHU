@@ -97,7 +97,7 @@ const findAllPokemons = async () => {
 
     return modifiedPokemon;
   });
-
+  
   const idModified = await Promise.all(promises);
   return idModified;
 };
