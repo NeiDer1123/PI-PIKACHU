@@ -1,8 +1,8 @@
-const { findAll } = require("./helpers/pokemons");
+const { findAllPokemons } = require("./helpers/pokemons");
 
 async function findAllPok(req, res) {
   try {
-    const allPokemons = await findAll();
+    const allPokemons = await findAllPokemons();
 
     res.status(201).json(allPokemons);
   } catch (error) {
